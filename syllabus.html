@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View and download the latest B.Tech syllabus for CSE and AIML. Stay updated with the university curriculum and course structures for all years.">
+    <meta name="keywords" content="B.Tech syllabus, AKTU syllabus, CSE curriculum, AIML syllabus, engineering course structure, Study Book">
+    <meta name="author" content="Study Book">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png?v=2">
+    <!-- Title -->
+    <title>Syllabus - Study Book</title>
+    <!-- Font Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Style Link -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J41ZWRBPCZ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-J41ZWRBPCZ');
+    </script>
+</head>
+<body class="canva-mode">
+
+    <!-- Mobile Top Bar -->
+    <div class="mobile-top-bar">
+        <button class="menu-btn" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+            <span>Study Book</span>
+        </div>
+        <button class="theme-toggle-nav" id="theme-toggle-mobile" style="display: flex;">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="menu-btn" id="sidebar-toggle-btn">
+                <i class="fas fa-book-open sidebar-toggle-icon-default"></i>
+                <i class="fas fa-bars sidebar-toggle-icon-hover"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="sidebar-menu">
+            <a href="login.html" class="sidebar-link profile-link">
+                <i class="fas fa-user-circle"></i> <span>Profile</span>
+            </a>
+            
+            <div class="menu-divider expanded-only"></div>
+
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="sidebar-link">
+                <i class="fas fa-plus"></i> <span>Upload Notes</span>
+            </a>
+
+            <div class="menu-divider expanded-only"></div>
+
+            <a href="index.html" class="sidebar-link">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </a>
+            <a href="notes.html" class="sidebar-link">
+                <i class="fas fa-file-alt"></i> <span>Notes</span>
+            </a>
+            <a href="pyqs.html" class="sidebar-link">
+                <i class="fas fa-file-circle-question"></i> <span>PYQs</span>
+            </a>
+            <a href="syllabus.html" class="sidebar-link active expanded-only">
+                <i class="fas fa-book-open"></i> <span>Syllabus</span>
+            </a>
+            <a href="index.html#tools" class="sidebar-link">
+                <i class="fas fa-tools"></i> <span>Tools</span>
+            </a>
+            
+            <a href="about.html" class="sidebar-link">
+                <i class="fas fa-info-circle"></i> <span>About Us</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" id="theme-toggle">
+                <i class="fas fa-sun"></i> <span>Switch Theme</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Navbar -->
+    <header class="navbar container">
+        <div class="nav-left">
+            <button class="menu-btn" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="theme-toggle-nav" id="theme-toggle-nav">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+
+        <!-- navbar-links -->
+        <nav class="nav-links desktop-only">
+            <a href="index.html">Home</a>
+            <a href="notes.html">Notes</a>
+            <a href="pyqs.html">PYQs</a>
+            <a href="syllabus.html" class="active">Syllabus</a>
+            <a href="index.html#tools">Tools</a>
+        </nav>
+        <a href="#syllabus" class="btn btn-purple nav-btn desktop-only">Get Syllabus</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Internal Hero -->
+        <div class="internal-hero">
+            <h1>Syllabus Repository</h1>
+            <p>Access the complete B.Tech curriculum and subject-wise syllabus details. Stay updated with the university's course structure and exam patterns for all four years.</p>
+        </div>
+
+        <section class="content-section">
+            
+            <!-- Search Bar -->
+            <div class="search-wrapper centered" style="margin-bottom: 30px;">
+                <div class="search-container">
+                    <input type="text" id="subject-search" placeholder="Search for subjects..." class="search-input">
+                    <button id="clear-search-btn" class="clear-search-btn"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs-container" id="syllabus">
+                <button class="tab-btn active" data-tab="year-1">1st Year</button>
+                <button class="tab-btn" data-tab="year-2">2nd Year</button>
+                <button class="tab-btn" data-tab="year-3">3rd Year</button>
+                <button class="tab-btn" data-tab="year-4">4th Year</button>
+            </div>
+
+            <!-- Year 1 Content -->
+            <div class="tab-content active" id="year-1">
+                <div class="syllabus-actions">
+                    <a href="assests/syllabus/AlphaStudy_Aktu_Btech1st_Syllabus.pdf" class="btn btn-blue" target="_blank"><i class="fas fa-eye"></i> View Syllabus</a>
+                    <a href="assests/syllabus/AlphaStudy_Aktu_Btech1st_Syllabus.pdf" class="btn btn-purple" download><i class="fas fa-download"></i> Download Complete 1st Year Syllabus</a>
+                </div>
+                <div class="selection-grid">
+                    <!-- Subject 1 -->
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-atom"></i></div>
+                            <h3>Engineering Physics</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/1st_year/Engineering_Physics.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/1st_year/Engineering_Physics.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subject 2 -->
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-square-root-variable"></i></div>
+                            <h3>Engineering Mathematics I</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subject 3 -->
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-bolt"></i></div>
+                            <h3>Basic Electrical Engineering</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/1st_year/Basic_Electrical_Engineering.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/1st_year/Basic_Electrical_Engineering.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subject 4 -->
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-code"></i></div>
+                            <h3>Programming for Problem Solving</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/1st_year/Programming_for_Problem_Solving.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/1st_year/Programming_for_Problem_Solving.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subject 5 -->
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-flask"></i></div>
+                            <h3>Engineering Chemistry</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/1st_year/Engineering_Chemistry.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/1st_year/Engineering_Chemistry.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subject 6 -->
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-square-root-variable"></i></div>
+                            <h3>Engineering Mathematics II</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subject 7 -->
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-microchip"></i></div>
+                            <h3>Basic Electronics Engineering</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/1st_year/Basic_Electronics_Engineering.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/1st_year/Basic_Electronics_Engineering.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subject 8 -->
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-cogs"></i></div>
+                            <h3>Fundamentals of Mechanical Engineering</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/1st_year/Mechanical_Engineering.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/1st_year/Mechanical_Engineering.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subject 9 -->
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-comments"></i></div>
+                            <h3>Soft Skills</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/1st_year/Soft_Skills.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/1st_year/Soft_Skills.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Subject 10 -->
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-leaf"></i></div>
+                            <h3>Environment And Ecology</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/1st_year/Environment_And_Ecology.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/1st_year/Environment_And_Ecology.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Year 2 Content -->
+            <div class="tab-content" id="year-2">
+                <div class="syllabus-actions">
+                    <a href="assests/syllabus/AlphaStudy_Aktu_Btech2nd_Syllabus.pdf" class="btn btn-blue" target="_blank"><i class="fas fa-eye"></i> View Syllabus</a>
+                    <a href="assests/syllabus/AlphaStudy_Aktu_Btech2nd_Syllabus.pdf" class="btn btn-purple" download><i class="fas fa-download"></i> Download Complete 2nd Year Syllabus</a>
+                </div>
+                <div class="selection-grid">
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-square-root-variable"></i></div>
+                            <h3>Engineering Mathematics IV</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/2nd_year/Engineering_Mathematics_IV.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/2nd_year/Engineering_Mathematics_IV.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                            <h3>Universal Human Values</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/2nd_year/Universal_Human_Values.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/2nd_year/Universal_Human_Values.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-layer-group"></i></div>
+                            <h3>Data Structures</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/2nd_year/Data_Structures.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/2nd_year/Data_Structures.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-memory"></i></div>
+                            <h3>Computer Organization & Architecture</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/2nd_year/Computer_Organization_and_Architecture.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/2nd_year/Computer_Organization_and_Architecture.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-project-diagram"></i></div>
+                            <h3>Discrete Structures & Theory of Logic</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/2nd_year/Discrete_Structures.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/2nd_year/Discrete_Structures.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-pen-fancy"></i></div>
+                            <h3>Technical Communication</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/2nd_year/Technical_Communication.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/2nd_year/Technical_Communication.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-desktop"></i></div>
+                            <h3>Operating Systems</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/2nd_year/Operating_Systems.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/2nd_year/Operating_Systems.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-subscript"></i></div>
+                            <h3>Theory of Automata & Formal Languages</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/2nd_year/Theory_of_Automata.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/2nd_year/Theory_of_Automata.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-object-group"></i></div>
+                            <h3>Object Oriented Programming</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/2nd_year/Object_Oriented_Programming.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/2nd_year/Object_Oriented_Programming.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-user-secret"></i></div>
+                            <h3>Cyber Security</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/2nd_year/Cyber_Security.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/2nd_year/Cyber_Security.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fab fa-python"></i></div>
+                            <h3>Pythan Programming</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/2nd_year/Pythan_Programming.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/2nd_year/Pythan_Programming.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Year 3 Content -->
+            <div class="tab-content" id="year-3">
+                <div class="syllabus-actions">
+                    <a href="assests/syllabus/AlphaStudy_Aktu_Btech3rd_Syllabus.pdf" class="btn btn-blue" target="_blank"><i class="fas fa-eye"></i> View Syllabus</a>
+                    <a href="assests/syllabus/AlphaStudy_Aktu_Btech3rd_Syllabus.pdf" class="btn btn-purple" download><i class="fas fa-download"></i> Download Complete 3rd Year Syllabus</a>
+                </div>
+                <div class="selection-grid">
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-database"></i></div>
+                            <h3>Database Management System</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/3rd_year/Database_Management_System.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/3rd_year/Database_Management_System.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-globe"></i></div>
+                            <h3>Web Technology</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/3rd_year/Web_Technology.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/3rd_year/Web_Technology.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-project-diagram"></i></div>
+                            <h3>Design and Analysis of Algorithm</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/3rd_year/Design_and_Analysis_of_Algorithm.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/3rd_year/Design_and_Analysis_of_Algorithm.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-cogs"></i></div>
+                            <h3>Software Engineering</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/3rd_year/Software_Engineering.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/3rd_year/Software_Engineering.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-code-branch"></i></div>
+                            <h3>Compiler Design</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/3rd_year/Compiler_Design.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/3rd_year/Compiler_Design.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-network-wired"></i></div>
+                            <h3>Computer Networks</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/3rd_year/Computer_Networks.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/3rd_year/Computer_Networks.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Year 4 Content -->
+            <div class="tab-content" id="year-4">
+                <div class="syllabus-actions">
+                    <a href="assests/syllabus/AlphaStudy_Aktu_Btech4th_Syllabus.pdf" class="btn btn-blue" target="_blank"><i class="fas fa-eye"></i> View Syllabus</a>
+                    <a href="assests/syllabus/AlphaStudy_Aktu_Btech4th_Syllabus.pdf" class="btn btn-purple" download><i class="fas fa-download"></i> Download Complete 4th Year Syllabus</a>
+                </div>
+                <div class="selection-grid">
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-brain"></i></div>
+                            <h3>Artificial Intelligence</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/4th_year/Artificial_Intelligence.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/4th_year/Artificial_Intelligence.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-cloud"></i></div>
+                            <h3>Cloud Computing</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/4th_year/Cloud_Computing.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/4th_year/Cloud_Computing.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-database"></i></div>
+                            <h3>Internet of Things</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/4th_year/Internet_of_Things.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/4th_year/Internet_of_Things.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subject-card">
+                        <div class="syllabus-item">
+                            <div class="subject-icon"><i class="fas fa-network-wired"></i></div>
+                            <h3>Cryptography & Network Security</h3>
+                            <div class="unit-actions">
+                                <a href="assests/syllabus/4th_year/Cryptography_&_Network Security.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                <a href="assests/syllabus/4th_year/Cryptography_&_Network Security.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </section>
+        <!-- Share Notes Section -->
+        <section class="content-section centered">
+            <h2 class="section-title">Share Your Notes</h2>
+            <p class="section-description">Help your juniors and peers by sharing your notes and study materials.</p>
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="btn btn-purple">
+                <i class="fas fa-upload"></i> Upload Notes
+            </a>
+        </section>
+        <div style="margin-top: 50px; text-align: center;">
+            <h3 style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(to right, var(--blue-accent), var(--purple-accent)); -webkit-background-clip: text; background-clip: text; color: transparent;">Study Book — Study Smarter. Score Better.</h3>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer container">
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
+            <a href="terms_conditions.html">Terms & Conditions</a>
+        </div>
+        <p class="copyright">© 2026 Study Book. Built with ❤️ for students.</p>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>

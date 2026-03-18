@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download free B.Tech notes for CSE and AIML. Organized semester-wise and subject-wise for easy access. Covers Physics, Math, Programming, and more.">
+    <meta name="keywords" content="B.Tech notes, engineering notes, CSE notes, AIML notes, study material, lecture notes, Study Book, AKTU notes">
+    <meta name="author" content="Study Book">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png?v=2">
+    <!-- Title -->
+    <title>Notes - Study Book</title>
+    <!-- Font Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Style Link -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J41ZWRBPCZ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-J41ZWRBPCZ');
+    </script>
+</head>
+<body class="canva-mode">
+
+    <!-- Mobile Top Bar -->
+    <div class="mobile-top-bar">
+        <button class="menu-btn" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+            <span>Study Book</span>
+        </div>
+        <button class="theme-toggle-nav" id="theme-toggle-mobile" style="display: flex;">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="menu-btn" id="sidebar-toggle-btn">
+                <i class="fas fa-book-open sidebar-toggle-icon-default"></i>
+                <i class="fas fa-bars sidebar-toggle-icon-hover"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="sidebar-menu">
+            <a href="login.html" class="sidebar-link profile-link">
+                <i class="fas fa-user-circle"></i> <span>Profile</span>
+            </a>
+            
+            <div class="menu-divider expanded-only"></div>
+
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="sidebar-link">
+                <i class="fas fa-plus"></i> <span>Upload Notes</span>
+            </a>
+
+            <div class="menu-divider expanded-only"></div>
+
+            <a href="index.html" class="sidebar-link">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </a>
+            <a href="notes.html" class="sidebar-link active">
+                <i class="fas fa-file-alt"></i> <span>Notes</span>
+            </a>
+            <a href="pyqs.html" class="sidebar-link">
+                <i class="fas fa-file-circle-question"></i> <span>PYQs</span>
+            </a>
+            <a href="syllabus.html" class="sidebar-link expanded-only">
+                <i class="fas fa-book-open"></i> <span>Syllabus</span>
+            </a>
+            <a href="index.html#tools" class="sidebar-link">
+                <i class="fas fa-tools"></i> <span>Tools</span>
+            </a>
+            
+            <a href="about.html" class="sidebar-link">
+                <i class="fas fa-info-circle"></i> <span>About Us</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" id="theme-toggle">
+                <i class="fas fa-sun"></i> <span>Switch Theme</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Navbar -->
+    <header class="navbar container">
+        <div class="nav-left">
+            <button class="menu-btn" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="theme-toggle-nav" id="theme-toggle-nav">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+
+        <!-- navbar-links -->
+        <nav class="nav-links desktop-only">
+            <a href="index.html">Home</a>
+            <a href="notes.html" class="active">Notes</a>
+            <a href="pyqs.html">PYQs</a>
+            <a href="syllabus.html">Syllabus</a>
+            <a href="index.html#tools">Tools</a>
+        </nav>
+        <a href="#notes" class="btn btn-purple nav-btn desktop-only">Get Notes</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Internal Hero -->
+        <div class="internal-hero">
+            <h1>B.Tech Notes Repository</h1>
+            <p>Welcome to your ultimate academic resource. Dive into our organized repository of B.Tech notes covering Computer Science and AI/ML. From fundamental concepts in the first year to advanced specialized topics in the final year, we have everything you need to ace your semesters.</p>
+        </div>
+
+        <section class="content-section" id="notes">
+            
+            <!-- Search Bar -->
+            <div class="search-wrapper centered" style="margin-bottom: 30px;">
+                <div class="search-container">
+                    <input type="text" id="subject-search" placeholder="Search for subjects..." class="search-input">
+                    <button id="clear-search-btn" class="clear-search-btn"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs-container">
+                <button class="tab-btn active" data-tab="year-1">1st Year</button>
+                <button class="tab-btn" data-tab="year-2">2nd Year</button>
+                <button class="tab-btn" data-tab="year-3">3rd Year</button>
+                <button class="tab-btn" data-tab="year-4">4th Year</button>
+            </div>
+
+            <!-- Year 1 Content -->
+            <div class="tab-content active" id="year-1">
+                <div class="selection-grid">
+                    
+                    <!-- Subject 1 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-atom"></i></div>
+                            <h3>Engineering Physics</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1: Quantum Mechanics</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/physics/Engineering_Physics_U1.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/physics/Engineering_Physics_U1.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2: Electromagnetic Field Theory</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/physics/Engineering_Physics_U2.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/physics/Engineering_Physics_U2.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3: Wave Optics</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/physics/Engineering_Physics_U3.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/physics/Engineering_Physics_U3.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4: Fiber Optics & Laser</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/physics/Engineering_Physics_U4.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/physics/Engineering_Physics_U4.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5: Superconductors and Nano-Materials</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/physics/Engineering_Physics_U5.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/physics/Engineering_Physics_U5.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 2 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-square-root-variable"></i></div>
+                            <h3>Engineering Mathematics I</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1: Matrices</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2: Differential Calculus- I</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3: Differential Calculus-II</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4: Multiple integration</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5: Vector Calculus</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_I.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 3 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-bolt"></i></div>
+                            <h3>Basic Electrical Engineering</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1: DC Circuits</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Electrical/Basic_Electrical_Engineering_U1.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Electrical/Basic_Electrical_Engineering_U1.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2: AC Circuits</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Electrical/Basic_Electrical_Engineering_U2.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Electrical/Basic_Electrical_Engineering_U2.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3: Transformers</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Electrical/Basic_Electrical_Engineering_U3.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Electrical/Basic_Electrical_Engineering_U3.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4: Electrical Machines</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Electrical/Basic_Electrical_Engineering_U4.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Electrical/Basic_Electrical_Engineering_U4.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5: Electrical Installations</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Electrical/Basic_Electrical_Engineering_U5.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Electrical/Basic_Electrical_Engineering_U5.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 4 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-code"></i></div>
+                            <h3>Programming for Problem Solving</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1: Introduction to Programming</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/PPS/Programming_for_Problem_Solving_U1.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/PPS/Programming_for_Problem_Solving_U1.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2: Arithmetic Expressions</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/PPS/Programming_for_Problem_Solving_U2.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/PPS/Programming_for_Problem_Solving_U2.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3: Iteration and Loops</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/PPS/Programming_for_Problem_Solving_U3.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/PPS/Programming_for_Problem_Solving_U3.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4: Functions</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/PPS/Programming_for_Problem_Solving_U4.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/PPS/Programming_for_Problem_Solving_U4.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5: Pointers</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/PPS/Programming_for_Problem_Solving_U5.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/PPS/Programming_for_Problem_Solving_U4.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 5 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-flask"></i></div>
+                            <h3>Engineering Chemistry</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1: Atomic & Molecular Structure</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Chemistry/Engineering_Chemistry_U1.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Chemistry/Engineering_Chemistry_U1.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2: Spectroscopic Techniques</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Chemistry/Engineering_Chemistry_U2.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Chemistry/Engineering_Chemistry_U2.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3: Electrochemistry</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Chemistry/Engineering_Chemistry_U3.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Chemistry/Engineering_Chemistry_U3.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4: Water Technology</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Chemistry/Engineering_Chemistry_U4.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Chemistry/Engineering_Chemistry_U4.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5: Materials Chemistry</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Chemistry/Engineering_Chemistry_U5.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Chemistry/Engineering_Chemistry_U5.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 6 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-square-root-variable"></i></div>
+                            <h3>Engineering Mathematics II</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1: Ordinary Differential Equations</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2: Laplace Transform</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3: Sequence & Series</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4: Complex Variable - Differentiation</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5: Complex Variable - Integration</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Engineering_Mathematics_II.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 7 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-microchip"></i></div>
+                            <h3>Basic Electronics Engineering</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1: Diodes & Applications</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Electronics/Basic_Electronics_Engineering_U1.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Electronics/Basic_Electronics_Engineering_U1.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2: BJT & FET</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Electronics/Basic_Electronics_Engineering_U2.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Electronics/Basic_Electronics_Engineering_U2.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3: Op-Amps</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Electronics/Basic_Electronics_Engineering_U3.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Electronics/Basic_Electronics_Engineering_U3.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4: Digital Electronics</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Electronics/Basic_Electronics_Engineering_U4.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Electronics/Basic_Electronics_Engineering_U4.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5: Communication Systems</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Electronics/Basic_Electronics_Engineering_U5.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Electronics/Basic_Electronics_Engineering_U5.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 8 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-cogs"></i></div>
+                            <h3>Fundamentals of Mechanical Engineering</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1: Introduction to Mechanics</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Mechanical/Mechanical_Engineering_U1.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Mechanical/Mechanical_Engineering_U1.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2: Introduction to IC Engines</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Mechanical/Mechanical_Engineering_U2.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Mechanical/Mechanical_Engineering_U2.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3: Refrigeration & Air Conditioning</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Mechanical/Mechanical_Engineering_U3.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Mechanical/Mechanical_Engineering_U3.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4: Fluid Mechanics and Applications</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Mechanical/Mechanical_Engineering_U4.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Mechanical/Mechanical_Engineering_U4.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5:  Measurement and Mechatronics</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Mechanical/Mechanical_Engineering_U5.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Mechanical/Mechanical_Engineering_U5.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 9 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-comments"></i></div>
+                            <h3>Soft Skills</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1: Applied Grammar and Usage</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Soft Skill/Soft_Skills_U1.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Soft Skill/Soft_Skills_U1.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2: Listening and Speaking Skills</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Soft Skill/Soft_Skills_U2.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Soft Skill/Soft_Skills_U2.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3: Reading and Writing Skills</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Soft Skill/Soft_Skills_U3.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Soft Skill/Soft_Skills_U3.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4: Presentation and Interaction Skills</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Soft Skill/Soft_Skills_U4.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Soft Skill/Soft_Skills_U4.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5: Work- place skills</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/Soft Skill/Soft_Skills_U5.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/Soft Skill/Soft_Skills_U5.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 10 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-leaf"></i></div>
+                            <h3>Environment And Ecology</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1: Ecosystems</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/EVS/Environment_And_Ecology_U1.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/EVS/Environment_And_Ecology_U1.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2: Natural Resources</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/EVS/Environment_And_Ecology_U2.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/EVS/Environment_And_Ecology_U2.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3: Pollution and their Effects</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/EVS/Environment_And_Ecology_U3.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/EVS/Environment_And_Ecology_U3.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4: Current Environmental Issues</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/EVS/Environment_And_Ecology_U4.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/EVS/Environment_And_Ecology_U4.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5: Environmental Protection</span>
+                                <div class="unit-actions">
+                                    <a href="assests/notes/1st_year/EVS/Environment_And_Ecology_U5.pdf" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="assests/notes/1st_year/EVS/Environment_And_Ecology_U5.pdf" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Year 2 Content -->
+            <div class="tab-content" id="year-2">
+                <div class="selection-grid">
+                    
+                    <!-- Subject 1 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-square-root-variable"></i></div>
+                            <h3>Engineering Mathematics IV</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 2 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                            <h3>Universal Human Values</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 3 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-layer-group"></i></div>
+                            <h3>Data Structures</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 4 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-memory"></i></div>
+                            <h3>Computer Organization & Architecture</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 5 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-project-diagram"></i></div>
+                            <h3>Discrete Structures & Theory of Logic</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 6 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-pen-fancy"></i></div>
+                            <h3>Technical Communication</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 7 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-desktop"></i></div>
+                            <h3>Operating Systems</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 8 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-subscript"></i></div>
+                            <h3>Theory of Automata & Formal Languages</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 9 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-object-group"></i></div>
+                            <h3>Object Oriented Programming</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 10 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-user-secret"></i></div>
+                            <h3>Cyber Security</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 11 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fab fa-python"></i></div>
+                            <h3>Python Programming</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Year 3 Content -->
+            <div class="tab-content" id="year-3">
+                <div class="selection-grid">
+                    
+                    <!-- Subject 1 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-database"></i></div>
+                            <h3>Database Management System</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 2 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-globe"></i></div>
+                            <h3>Web Technology</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 3 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-project-diagram"></i></div>
+                            <h3>Design & Analysis of Algorithms</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 4 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-cogs"></i></div>
+                            <h3>Software Engineering</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 5 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-code-branch"></i></div>
+                            <h3>Compiler Design</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subject 6 -->
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-network-wired"></i></div>
+                            <h3>Computer Networks</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 2</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 3</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 4</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                            <div class="unit-item">
+                                <span>Unit 5</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Year 4 Content -->
+            <div class="tab-content" id="year-4">
+                <div class="selection-grid">
+                    <div class="card subject-card">
+                        <div class="subject-header">
+                            <div class="subject-icon"><i class="fas fa-cloud"></i></div>
+                            <h3>Cloud Computing</h3>
+                            <div class="dropdown-btn"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="unit-list">
+                            <div class="unit-item">
+                                <span>Unit 1: Cloud Architecture</span>
+                                <div class="unit-actions">
+                                    <a href="coming_soon.html" class="btn-sm btn-blue" title="View" target="_blank"><i class="fas fa-eye"></i></a>
+                                    <a href="coming_soon.html" class="btn-sm btn-purple" title="Download" download><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Share Notes Section -->
+        <section class="content-section centered">
+            <h2 class="section-title">Share Your Notes</h2>
+            <p class="section-description">Help your juniors and peers by sharing your notes and study materials.</p>
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="btn btn-purple">
+                <i class="fas fa-upload"></i> Upload Notes
+            </a>
+        </section>
+        <div style="margin-top: 50px; text-align: center;">
+            <h3 style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(to right, var(--blue-accent), var(--purple-accent)); -webkit-background-clip: text; background-clip: text; color: transparent;">Study Book — Study Smarter. Score Better.</h3>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer container">
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
+            <a href="terms_conditions.html">Terms & Conditions</a>
+        </div>
+        <p class="copyright">© 2026 Study Book. Built with ❤️ for students.</p>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
