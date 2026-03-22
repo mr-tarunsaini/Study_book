@@ -20,7 +20,7 @@
       gtag('config', 'G-J41ZWRBPCZ');
     </script>
 </head>
-<body class="canva-mode">
+<body class="canva-mode " style="padding-top: 2%;">
 
     <!-- Mobile Top Bar
     <div class="mobile-top-bar">
@@ -72,9 +72,8 @@
             </button>
         </div>
     </aside> 
-    -->
 
-    <!-- Navbar -->
+    
     <header class="navbar">
         <div class="nav-left">
             <button class="menu-btn" id="menu-btn">
@@ -89,7 +88,6 @@
             </button>
         </div>
 
-        <!-- navbar-links -->
         <nav class="nav-links desktop-only">
             <a href="index.html">Home</a>
             <a href="notes.html">Notes</a>
@@ -102,15 +100,15 @@
 
     <!-- Main Content -->
     <main class="container" style="display: flex; align-items: center; min-height: 100vh; padding-top: 40px; padding-bottom: 40px;">
-        <div class="auth-layout" style="display: flex; flex-wrap: wrap; width: 100%; gap: 40px; align-items: center; justify-content: center;">
+        <div class="auth-layout" style="display: flex; flex-wrap: wrap; width: 100%; gap: 20px; align-items: center; justify-content: center;">
             
             <!-- Left Side: Image and Text -->
             <div class="auth-left" style="flex: 1; min-width: 300px; text-align: center;">
                 <div class="internal-hero" style="padding: 0; margin: 0;">
-                    <h1 id="auth-title" style="font-size: 4rem;">Welcome Back</h1>
+                    <h1 id="auth-title" >Welcome Back</h1>
                     <p id="auth-subtitle" style="font-size: 1.1rem;">Sign in to access your saved notes and tools.</p>
                 </div>
-                <img src="assests/Hero-image.png" alt="Study Smarter" style="max-width: 100%; max-height: 400px; height: auto; margin-bottom: 20px;">
+                <img src="assests/login.png.png" alt="Study Smarter" class="auth-image">
             </div>
 
             <!-- Right Side: Forms -->
@@ -133,7 +131,7 @@
                         <input type="password" class="form-input" placeholder="Enter your password" required>
                     </div>
                     <div style="text-align: right; margin-bottom: 25px;">
-                        <a href="#" style="font-size: 0.9rem; color: var(--blue-accent); font-weight: 500;">Forgot Password?</a>
+                        <a href="https://studybook-15297.firebaseapp.com/__/auth/action?mode=action&oobCode=code" id="forgot-password-link" style="font-size: 0.9rem; color: var(--blue-accent); font-weight: 500;">Forgot Password?</a>
                     </div>
                     <button type="submit" class="btn btn-purple full-width" style="padding: 14px; font-size: 1.1rem; justify-content: center;">Sign In</button>
                     
@@ -143,9 +141,6 @@
                     <div style="display: flex; gap: 15px; margin-top: 15px;">
                         <button type="button" id="google-login-btn" class="btn full-width" style="background-color: var(--primary-bg); color: var(--text-dark); border: 1px solid var(--border-color); justify-content: center;">
                             <i class="fab fa-google" style="color: #DB4437;"></i> Google
-                        </button>
-                        <button type="button" id="github-login-btn" class="btn full-width" style="background-color: var(--primary-bg); color: var(--text-dark); border: 1px solid var(--border-color); justify-content: center;">
-                            <i class="fab fa-github"></i> GitHub
                         </button>
                     </div>
                 </form>
@@ -213,22 +208,6 @@
                 loginForm.style.display = 'none';
                 authTitle.innerText = 'Create an Account';
                 authSubtitle.innerText = 'Join Study Book to save notes and track your progress.';
-            });
-
-            // Mock Login / Register Logic
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const emailInput = loginForm.querySelector('input[type="email"]').value;
-                const name = emailInput.split('@')[0]; // Extract name from email as a fallback
-                localStorage.setItem('userName', name);
-                window.location.href = 'index.html';
-            });
-
-            registerForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const nameInput = registerForm.querySelector('input[type="text"]').value;
-                localStorage.setItem('userName', nameInput);
-                window.location.href = 'index.html';
             });
         });
     </script>

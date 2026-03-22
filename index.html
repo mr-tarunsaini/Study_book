@@ -84,9 +84,6 @@
             <a href="syllabus.html" class="sidebar-link expanded-only">
                 <i class="fas fa-book-open"></i> <span>Syllabus</span>
             </a>
-            <a href="#tools" class="sidebar-link">
-                <i class="fas fa-tools"></i> <span>Tools</span>
-            </a>
             
             <a href="about.html" class="sidebar-link">
                 <i class="fas fa-info-circle"></i> <span>About Us</span>
@@ -113,891 +110,118 @@
             <button class="theme-toggle-nav" id="theme-toggle-nav">
                 <i class="fas fa-sun"></i>
             </button>
-        </div><!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="description" content="Study Book is the ultimate resource for B.Tech students (CSE & AIML). Get free notes, previous year questions (PYQs), syllabus, and study tools to score better.">
-            <meta name="keywords" content="B.Tech notes, AKTU notes, CSE notes, AIML notes, engineering syllabus, previous year questions, PYQs, SGPA calculator, Study Book, study material">
-            <meta name="author" content="Study Book">
-            <!-- Favicon -->
-            <link rel="icon" type="image/png" href="logo.png?v=2">
-            <!-- Title -->
-            <title>Study Book - Study Smarter</title>
-            <!-- Font Style -->
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-            <!-- Font Awesome Link -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-            <!-- Style Link -->
-            <link rel="stylesheet" href="style.css">
-        </head>
-        <body class="canva-mode">
-        
-            <!-- Mobile Top Bar -->
-            <div class="mobile-top-bar">
-                <button class="menu-btn" id="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="logo">
-                    <div class="logo-icon"><i class="fas fa-book-open"></i></div>
-                    <span>Study Book</span>
-                </div>
-                <button class="theme-toggle-nav" id="theme-toggle-mobile" style="display: flex;">
-                    <i class="fas fa-sun"></i>
-                </button>
-            </div>
-        
-            <!-- Sidebar Overlay -->
-            <div class="sidebar-overlay" id="overlay"></div>
-        
-            <aside class="sidebar" id="sidebar">
-                <div class="sidebar-header">
-                    <button class="menu-btn" id="sidebar-toggle-btn"><i class="fas fa-bars"></i></button>
-                    <div class="logo">
-                        <div class="logo-icon"><i class="fas fa-book-open"></i></div>
-                        <span>Study Book</span>
-                    </div>
-                    <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
-                </div>
-        
-                <!-- Sidebar Menu -->
-                <nav class="sidebar-menu">
-                    <div class="menu-label expanded-only">Menu</div>
-                    <a href="index.html" class="sidebar-link active expanded-only">
-                        <i class="fas fa-home"></i> <span>Home</span>
-                    </a>
-                    <a href="#notes" class="sidebar-link">
-                        <i class="fas fa-file-alt"></i> <span>Notes</span>
-                    </a>
-                    <a href="#pyqs" class="sidebar-link">
-                        <i class="fas fa-file-circle-question"></i> <span>PYQs</span>
-                    </a>
-                    <a href="syllabus.html" class="sidebar-link expanded-only">
-                        <i class="fas fa-book-open"></i> <span>Syllabus</span>
-                    </a>
-                    <a href="#tools" class="sidebar-link">
-                        <i class="fas fa-tools"></i> <span>Tools</span>
-                    </a>
-        
-                    <div class="menu-divider expanded-only"></div>
-        
-                    <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="sidebar-link">
-                        <i class="fas fa-upload"></i> <span>Upload Notes</span>
-                    </a>
-        
-                    <div class="menu-divider expanded-only"></div>
+        </div>
+            <!-- navbar-links -->
+            <nav class="nav-links desktop-only">
+                <a href="index.html" class="active">Home</a>
+                <a href="notes.html">Notes</a>
+                <a href="pyqs.html">PYQs</a>
+                <a href="syllabus.html">Syllabus</a>
+            </nav>
+            <a href="login.html" class="btn btn-purple nav-btn desktop-only">Login / Register</a>
+        </header>
+    
+        <!-- Main Content -->
+        <main class="container">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>Hello, What Do You Want To Study?</h1>
                     
-                    <a href="about.html" class="sidebar-link">
-                        <i class="fas fa-info-circle"></i> <span>About Us</span>
-                    </a>
-                    <a href="contact.html" class="sidebar-link expanded-only">
-                        <i class="fas fa-envelope"></i> <span>Contact Us</span>
-                    </a>
-                    <a href="privacy_policy.html" class="sidebar-link expanded-only">
-                        <i class="fas fa-user-shield"></i> <span>Privacy Policy</span>
-                    </a>
-                    <a href="terms_conditions.html" class="sidebar-link expanded-only">
-                        <i class="fas fa-file-contract"></i> <span>Terms & Conditions</span>
-                    </a>
-                </nav>
-                
-                <div class="sidebar-footer">
-                    <a href="login.html" class="sidebar-link sidebar-login-btn">
-                        <i class="fas fa-sign-in-alt"></i> <span>Login / Register</span>
-                    </a>
-                    <button class="theme-toggle-btn" id="theme-toggle">
-                        <i class="fas fa-sun"></i> <span>Switch Theme</span>
-                    </button>
-                </div>
-            </aside>
-        
-            <!-- Navbar -->
-            <header class="navbar container">
-                <div class="nav-left">
-                    <button class="menu-btn" id="menu-btn">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="logo">
-                        <div class="logo-icon"><i class="fas fa-book-open"></i></div>
-                        <span>Study Book</span>
-                    </div>
-                    <button class="theme-toggle-nav" id="theme-toggle-nav">
-                        <i class="fas fa-sun"></i>
-                    </button>
-                </div>
-        
-                <!-- navbar-links -->
-                <nav class="nav-links desktop-only">
-                    <a href="index.html" class="active">Home</a>
-                    <a href="notes.html">Notes</a>
-                    <a href="pyqs.html">PYQs</a>
-                    <a href="syllabus.html">Syllabus</a>
-                    <a href="index.html#tools">Tools</a>
-                </nav>
-                <a href="login.html" class="btn btn-purple nav-btn desktop-only">Login / Register</a>
-            </header>
-        
-            <!-- Main Content -->
-            <main class="container">
-                <!-- Hero Section -->
-                <section class="hero-section">
-                    <div class="hero-content">
-                        <h1>Hello, What Do You Want To Study?</h1>
-                        
-                        <div class="search-bar">
+                    <div class="home-search-wrapper">
+                        <form action="search.html" method="GET" class="search-bar" id="home-search-bar">
                             <i class="fas fa-search search-icon-left"></i>
-                            <input type="text" placeholder="Search notes, pyqs...">
-                        </div>
-                        
-                        <div class="hero-quick-links">
-                            <a href="notes.html" class="quick-link-pill ">Notes</a>
-                            <a href="pyqs.html" class="quick-link-pill ">PYQs</a>
-                            <a href="syllabus.html" class="quick-link-pill hide-on-mobile">Syllabus</a>
-                            <a href="calculator.html" class="quick-link-pill hide-on-mobile">SGPA Calculator</a>
-                        </div>
+                            <input type="text" name="q" id="home-search-input" placeholder="Search for courses, notes, pyqs..." autocomplete="off">
+                            <button type="submit" style="display: none;">Search</button>
+                        </form>
+                        <!-- Live Results Dropdown -->
+                        <div id="live-search-results" class="live-search-dropdown"></div>
                     </div>
-                </section>
-        
-                <!-- Content Section (Notes) -->
-                <section class="content-section" id="notes">
-                    <h2 class="section-title">Notes for B Tech Students ( CSE & AIML )</h2>
-                    <p class="section-description">Comprehensive study materials organized by year and semester to help you excel.</p>
                     
-                    <div class="selection-grid">
-                        <a href="notes.html?year=1" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-seedling"></i></div>
-                            <h3>1st Year Notes</h3>
-                            <p>Common Subjects (Sem 1 & 2)</p>
-                        </a>
-        
-                        <a href="notes.html?year=2" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-code"></i></div>
-                            <h3>2nd Year Notes</h3>
-                            <p>Core CSE Subjects (Sem 3 & 4)</p>
-                        </a>
-        
-                        <a href="notes.html?year=3" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-brain"></i></div>
-                            <h3>3rd Year Notes</h3>
-                            <p>Advanced AI Subjects (Sem 5 & 6)</p>
-                        </a>
-        
-                        <a href="notes.html?year=4" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-graduation-cap"></i></div>
-                            <h3>4th Year Notes</h3>
-                            <p>Projects & Electives (Sem 7 & 8)</p>
-                        </a>
-                    </div>
-                </section>
-        
-                <!-- Content Section (PYQs) -->
-                <section class="content-section" id="pyqs">
-                    <h2 class="section-title" id="get-started">PYQs for B Tech students ( CSE & AIML )</h2>
-                    <p class="section-description">Practice with previous year question papers to understand exam patterns and score better.</p>
-                    
-                    <div class="selection-grid">
-                        <a href="pyqs.html?year=1" class="selection-card purple-selection-card page-transition">
-                            <div class="selection-icon purple-icon"><i class="fas fa-file-alt"></i></div>
-                            <h3>1st Year PYQs</h3>
-                            <p>Recent Question Papers (Sem 1 & 2)</p>
-                        </a>
-        
-                        <a href="pyqs.html?year=2" class="selection-card purple-selection-card page-transition">
-                            <div class="selection-icon purple-icon"><i class="fas fa-file-code"></i></div>
-                            <h3>2nd Year PYQs</h3>
-                            <p>Recent Question Papers (Sem 3 & 4)</p>
-                        </a>
-        
-                        <a href="pyqs.html?year=3" class="selection-card purple-selection-card page-transition">
-                            <div class="selection-icon purple-icon"><i class="fas fa-network-wired"></i></div>
-                            <h3>3rd Year PYQs</h3>
-                            <p>Recent Question Papers (Sem 5 & 6)</p>
-                        </a>
-        
-                        <a href="pyqs.html?year=4" class="selection-card purple-selection-card page-transition">
-                            <div class="selection-icon purple-icon"><i class="fas fa-server"></i></div>
-                            <h3>4th Year PYQs</h3>
-                            <p>Recent Question Papers (Sem 7 & 8)</p>
-                        </a>
-                    </div>
-                </section>
-        
-                <!-- Content Section (Syllabus) -->
-                <section class="content-section" id="syllabus">
-                    <h2 class="section-title">Syllabus for B Tech ( CSE & AIML )</h2>
-                    <p class="section-description">Stay on track with the latest university curriculum and course structures.</p>
-                    
-                    <div class="selection-grid">
-                        <a href="syllabus.html?year=1" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-map"></i></div>
-                            <h3>1st Year Syllabus</h3>
-                            <p>Complete Curriculum (Sem 1 & 2)</p>
-                        </a>
-        
-                        <a href="syllabus.html?year=2" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-layer-group"></i></div>
-                            <h3>2nd Year Syllabus</h3>
-                            <p>Core Syllabus (Sem 3 & 4)</p>
-                        </a>
-        
-                        <a href="syllabus.html?year=3" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-microchip"></i></div>
-                            <h3>3rd Year Syllabus</h3>
-                            <p>Specialization Syllabus (Sem 5 & 6)</p>
-                        </a>
-        
-                        <a href="syllabus.html?year=4" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-project-diagram"></i></div>
-                            <h3>4th Year Syllabus</h3>
-                            <p>Electives Syllabus (Sem 7 & 8)</p>
-                        </a>
-                    </div>
-                </section>
-        
-                <!-- Content Section (Tools) -->
-                <section class="content-section" id="tools">
-                    <h2 class="section-title">Study Tools for Students</h2>
-                    <p class="section-description">Essential utilities and calculators designed to boost your academic productivity.</p>
-                    
-                    <div class="selection-grid">
-                        <a href="calculator.html" class="selection-card purple-selection-card">
-                            <div class="selection-icon purple-icon"><i class="fas fa-calculator"></i></div>
-                            <h3>SGPA/CGPA Calculator</h3>
-                            <p>Calculate Semester & Cumulative GPA</p>
-                        </a>
-        
-                        <a href="coming_soon.html" class="selection-card purple-selection-card">
-                            <div class="selection-icon purple-icon"><i class="fas fa-star"></i></div>
-                            <h3>Important Exam Questions</h3>
-                            <p>Curated topics for high scores</p>
-                        </a>
-        
-                        <a href="coming_soon.html" class="selection-card purple-selection-card">
-                            <div class="selection-icon purple-icon"><i class="fas fa-square-root-variable"></i></div>
-                            <h3>Engineering Formula Sheets</h3>
-                            <p>Quick revision for all subjects</p>
-                        </a>
-        
-                        <a href="coming_soon.html" class="selection-card purple-selection-card">
-                            <div class="selection-icon purple-icon"><i class="fas fa-file-pdf"></i></div>
-                            <h3>Student PDF Tools</h3>
-                            <p>Merge, Compress & Organize PDFs</p>
-                        </a>
-                    </div>
-                </section>
-        
-        
-                    <!-- Why Alpha Study -->
-                    <div class="sidebar-column">
-                        <section class="content-section">
-                            <h2 class="section-title centered">Why Study Book</h2>
-                            <p class="section-description">Discover what makes our platform the preferred choice for engineering students.</p>
-                            <div class="features-grid">
-                                <div class="card feature-card">
-                                    <div class="icon-box blue-icon"><i class="fas fa-tag"></i></div>
-                                    <h3>Free & Simple</h3>
-                                    <p>No hidden fees, just pure learning.</p>
-                                </div>
-                                <div class="card feature-card purple-card">
-                                    <div class="icon-box purple-icon"><i class="fas fa-bullseye"></i></div>
-                                    <h3>Exam Focused</h3>
-                                    <p>Curated content for high scores.</p>
-                                </div>
-                                <div class="card feature-card">
-                                    <div class="icon-box blue-icon"><i class="fas fa-mobile-alt"></i></div>
-                                    <h3>Mobile Friendly</h3>
-                                    <p>Study on the go, anytime.</p>
-                                </div>
-                            </div>
-                        </section>
+                    <div class="hero-quick-links">
+                        <a href="notes.html" class="quick-link-pill ">Notes</a>
+                        <a href="pyqs.html" class="quick-link-pill ">PYQs</a>
+                        <a href="syllabus.html" class="quick-link-pill hide-on-mobile">Syllabus</a>
+                        <a href="calculator.html" class="quick-link-pill hide-on-mobile">SGPA Calculator</a>
                     </div>
                 </div>
-        
-                <!-- Share Notes Section -->
-                <section class="content-section centered">
-                    <h2 class="section-title">Share Your Notes</h2>
-                    <p class="section-description">Help your juniors and peers by sharing your notes and study materials.</p>
-                    <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="btn btn-purple">
-                        <i class="fas fa-upload"></i> Upload Notes
-                    </a>
-                </section>
-                <div style="margin-top: 50px; text-align: center;">
-                    <h3 style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(to right, var(--blue-accent), var(--purple-accent)); -webkit-background-clip: text; background-clip: text; color: transparent;">Study Book — Study Smarter. Score Better.</h3>
-                </div>
-        
-            </main>
-        
-            <!-- Footer -->
-            <footer class="footer container">
-                <!-- Footer Links -->
-                <div class="footer-links">
-                    <a href="about.html">About Us</a>
-                    <a href="contact.html">Contact Us</a>
-                    <a href="privacy_policy.html">Privacy Policy</a>
-                    <a href="terms_conditions.html">Terms & Conditions</a>
-                </div>
+            </section>
+    
+            <!-- Content Section (Notes) -->
+            <section class="content-section" id="notes">
+                <h2 class="section-title">Notes for Students</h2>
+                <p class="section-description desktop-only">Discover the latest notes and resources shared by your peers.</p>
                 
-                <!-- Copyright -->
-                <p class="copyright">© 2026 Study Book. Built with ❤️ for students.</p>
-            </footer>
-        
-            <!-- Script -->
-            <script src="script.js"></script>
-        
-        </body>
-        </html><!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="description" content="Study Book is the ultimate resource for B.Tech students (CSE & AIML). Get free notes, previous year questions (PYQs), syllabus, and study tools to score better.">
-            <meta name="keywords" content="B.Tech notes, AKTU notes, CSE notes, AIML notes, engineering syllabus, previous year questions, PYQs, SGPA calculator, Study Book, study material">
-            <meta name="author" content="Study Book">
-            <!-- Favicon -->
-            <link rel="icon" type="image/png" href="logo.png?v=2">
-            <!-- Title -->
-            <title>Study Book - Study Smarter</title>
-            <!-- Font Style -->
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-            <!-- Font Awesome Link -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-            <!-- Style Link -->
-            <link rel="stylesheet" href="style.css">
-        </head>
-        <body class="canva-mode">
-        
-            <!-- Mobile Top Bar -->
-            <div class="mobile-top-bar">
-                <button class="menu-btn" id="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="logo">
-                    <div class="logo-icon"><i class="fas fa-book-open"></i></div>
-                    <span>Study Book</span>
+                <!-- Space for dynamically fetched uploaded cards -->
+                <div class="document-grid" id="uploaded-notes-grid">
                 </div>
-                <button class="theme-toggle-nav" id="theme-toggle-mobile" style="display: flex;">
-                    <i class="fas fa-sun"></i>
-                </button>
-            </div>
-        
-            <!-- Sidebar Overlay -->
-            <div class="sidebar-overlay" id="overlay"></div>
-        
-            <aside class="sidebar" id="sidebar">
-                <div class="sidebar-header">
-                    <button class="menu-btn" id="sidebar-toggle-btn"><i class="fas fa-bars"></i></button>
-                    <div class="logo">
-                        <div class="logo-icon"><i class="fas fa-book-open"></i></div>
-                        <span>Study Book</span>
-                    </div>
-                    <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
-                </div>
-        
-                <!-- Sidebar Menu -->
-                <nav class="sidebar-menu">
-                    <div class="menu-label expanded-only">Menu</div>
-                    <a href="index.html" class="sidebar-link active expanded-only">
-                        <i class="fas fa-home"></i> <span>Home</span>
-                    </a>
-                    <a href="#notes" class="sidebar-link">
-                        <i class="fas fa-file-alt"></i> <span>Notes</span>
-                    </a>
-                    <a href="#pyqs" class="sidebar-link">
-                        <i class="fas fa-file-circle-question"></i> <span>PYQs</span>
-                    </a>
-                    <a href="syllabus.html" class="sidebar-link expanded-only">
-                        <i class="fas fa-book-open"></i> <span>Syllabus</span>
-                    </a>
-                    <a href="#tools" class="sidebar-link">
-                        <i class="fas fa-tools"></i> <span>Tools</span>
-                    </a>
-        
-                    <div class="menu-divider expanded-only"></div>
-        
-                    <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="sidebar-link">
-                        <i class="fas fa-upload"></i> <span>Upload Notes</span>
-                    </a>
-        
-                    <div class="menu-divider expanded-only"></div>
-                    
-                    <a href="about.html" class="sidebar-link">
-                        <i class="fas fa-info-circle"></i> <span>About Us</span>
-                    </a>
-                    <a href="contact.html" class="sidebar-link expanded-only">
-                        <i class="fas fa-envelope"></i> <span>Contact Us</span>
-                    </a>
-                    <a href="privacy_policy.html" class="sidebar-link expanded-only">
-                        <i class="fas fa-user-shield"></i> <span>Privacy Policy</span>
-                    </a>
-                    <a href="terms_conditions.html" class="sidebar-link expanded-only">
-                        <i class="fas fa-file-contract"></i> <span>Terms & Conditions</span>
-                    </a>
-                </nav>
+            </section>
+    
+            <!-- Content Section (PYQs) -->
+            <section class="content-section" id="pyqs">
+                <h2 class="section-title" id="get-started">PYQs for students</h2>
+                <p class="section-description desktop-only">Practice with previous year question papers to understand exam patterns.</p>
                 
-                <div class="sidebar-footer">
-                    <a href="login.html" class="sidebar-link sidebar-login-btn">
-                        <i class="fas fa-sign-in-alt"></i> <span>Login / Register</span>
-                    </a>
-                    <button class="theme-toggle-btn" id="theme-toggle">
-                        <i class="fas fa-sun"></i> <span>Switch Theme</span>
-                    </button>
+                <!-- Space for dynamically fetched uploaded cards -->
+                <div class="document-grid" id="uploaded-pyqs-grid">
                 </div>
-            </aside>
-        
-            <!-- Navbar -->
-            <header class="navbar container">
-                <div class="nav-left">
-                    <button class="menu-btn" id="menu-btn">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="logo">
-                        <div class="logo-icon"><i class="fas fa-book-open"></i></div>
-                        <span>Study Book</span>
-                    </div>
-                    <button class="theme-toggle-nav" id="theme-toggle-nav">
-                        <i class="fas fa-sun"></i>
-                    </button>
-                </div>
-        
-                <!-- navbar-links -->
-                <nav class="nav-links desktop-only">
-                    <a href="index.html" class="active">Home</a>
-                    <a href="notes.html">Notes</a>
-                    <a href="pyqs.html">PYQs</a>
-                    <a href="syllabus.html">Syllabus</a>
-                    <a href="index.html#tools">Tools</a>
-                </nav>
-                <a href="login.html" class="btn btn-purple nav-btn desktop-only">Login / Register</a>
-            </header>
-        
-            <!-- Main Content -->
-            <main class="container">
-                <!-- Hero Section -->
-                <section class="hero-section">
-                    <div class="hero-content">
-                        <h1>Hello, What Do You Want To Study?</h1>
-                        
-                        <div class="search-bar">
-                            <i class="fas fa-search search-icon-left"></i>
-                            <input type="text" placeholder="Search notes, pyqs...">
-                        </div>
-                        
-                        <div class="hero-quick-links">
-                            <a href="notes.html" class="quick-link-pill ">Notes</a>
-                            <a href="pyqs.html" class="quick-link-pill ">PYQs</a>
-                            <a href="syllabus.html" class="quick-link-pill hide-on-mobile">Syllabus</a>
-                            <a href="calculator.html" class="quick-link-pill hide-on-mobile">SGPA Calculator</a>
-                        </div>
-                    </div>
-                </section>
-        
-                <!-- Content Section (Notes) -->
-                <section class="content-section" id="notes">
-                    <h2 class="section-title">Notes for B Tech Students ( CSE & AIML )</h2>
-                    <p class="section-description">Comprehensive study materials organized by year and semester to help you excel.</p>
-                    
-                    <div class="selection-grid">
-                        <a href="notes.html?year=1" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-seedling"></i></div>
-                            <h3>1st Year Notes</h3>
-                            <p>Common Subjects (Sem 1 & 2)</p>
-                        </a>
-        
-                        <a href="notes.html?year=2" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-code"></i></div>
-                            <h3>2nd Year Notes</h3>
-                            <p>Core CSE Subjects (Sem 3 & 4)</p>
-                        </a>
-        
-                        <a href="notes.html?year=3" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-brain"></i></div>
-                            <h3>3rd Year Notes</h3>
-                            <p>Advanced AI Subjects (Sem 5 & 6)</p>
-                        </a>
-        
-                        <a href="notes.html?year=4" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-graduation-cap"></i></div>
-                            <h3>4th Year Notes</h3>
-                            <p>Projects & Electives (Sem 7 & 8)</p>
-                        </a>
-                    </div>
-                </section>
-        
-                <!-- Content Section (PYQs) -->
-                <section class="content-section" id="pyqs">
-                    <h2 class="section-title" id="get-started">PYQs for B Tech students ( CSE & AIML )</h2>
-                    <p class="section-description">Practice with previous year question papers to understand exam patterns and score better.</p>
-                    
-                    <div class="selection-grid">
-                        <a href="pyqs.html?year=1" class="selection-card purple-selection-card page-transition">
-                            <div class="selection-icon purple-icon"><i class="fas fa-file-alt"></i></div>
-                            <h3>1st Year PYQs</h3>
-                            <p>Recent Question Papers (Sem 1 & 2)</p>
-                        </a>
-        
-                        <a href="pyqs.html?year=2" class="selection-card purple-selection-card page-transition">
-                            <div class="selection-icon purple-icon"><i class="fas fa-file-code"></i></div>
-                            <h3>2nd Year PYQs</h3>
-                            <p>Recent Question Papers (Sem 3 & 4)</p>
-                        </a>
-        
-                        <a href="pyqs.html?year=3" class="selection-card purple-selection-card page-transition">
-                            <div class="selection-icon purple-icon"><i class="fas fa-network-wired"></i></div>
-                            <h3>3rd Year PYQs</h3>
-                            <p>Recent Question Papers (Sem 5 & 6)</p>
-                        </a>
-        
-                        <a href="pyqs.html?year=4" class="selection-card purple-selection-card page-transition">
-                            <div class="selection-icon purple-icon"><i class="fas fa-server"></i></div>
-                            <h3>4th Year PYQs</h3>
-                            <p>Recent Question Papers (Sem 7 & 8)</p>
-                        </a>
-                    </div>
-                </section>
-        
-                <!-- Content Section (Syllabus) -->
-                <section class="content-section" id="syllabus">
-                    <h2 class="section-title">Syllabus for B Tech ( CSE & AIML )</h2>
-                    <p class="section-description">Stay on track with the latest university curriculum and course structures.</p>
-                    
-                    <div class="selection-grid">
-                        <a href="syllabus.html?year=1" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-map"></i></div>
-                            <h3>1st Year Syllabus</h3>
-                            <p>Complete Curriculum (Sem 1 & 2)</p>
-                        </a>
-        
-                        <a href="syllabus.html?year=2" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-layer-group"></i></div>
-                            <h3>2nd Year Syllabus</h3>
-                            <p>Core Syllabus (Sem 3 & 4)</p>
-                        </a>
-        
-                        <a href="syllabus.html?year=3" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-microchip"></i></div>
-                            <h3>3rd Year Syllabus</h3>
-                            <p>Specialization Syllabus (Sem 5 & 6)</p>
-                        </a>
-        
-                        <a href="syllabus.html?year=4" class="selection-card page-transition">
-                            <div class="selection-icon notes-icon"><i class="fas fa-project-diagram"></i></div>
-                            <h3>4th Year Syllabus</h3>
-                            <p>Electives Syllabus (Sem 7 & 8)</p>
-                        </a>
-                    </div>
-                </section>
-        
-                <!-- Content Section (Tools) -->
-                <section class="content-section" id="tools">
-                    <h2 class="section-title">Study Tools for Students</h2>
-                    <p class="section-description">Essential utilities and calculators designed to boost your academic productivity.</p>
-                    
-                    <div class="selection-grid">
-                        <a href="calculator.html" class="selection-card purple-selection-card">
-                            <div class="selection-icon purple-icon"><i class="fas fa-calculator"></i></div>
-                            <h3>SGPA/CGPA Calculator</h3>
-                            <p>Calculate Semester & Cumulative GPA</p>
-                        </a>
-        
-                        <a href="coming_soon.html" class="selection-card purple-selection-card">
-                            <div class="selection-icon purple-icon"><i class="fas fa-star"></i></div>
-                            <h3>Important Exam Questions</h3>
-                            <p>Curated topics for high scores</p>
-                        </a>
-        
-                        <a href="coming_soon.html" class="selection-card purple-selection-card">
-                            <div class="selection-icon purple-icon"><i class="fas fa-square-root-variable"></i></div>
-                            <h3>Engineering Formula Sheets</h3>
-                            <p>Quick revision for all subjects</p>
-                        </a>
-        
-                        <a href="coming_soon.html" class="selection-card purple-selection-card">
-                            <div class="selection-icon purple-icon"><i class="fas fa-file-pdf"></i></div>
-                            <h3>Student PDF Tools</h3>
-                            <p>Merge, Compress & Organize PDFs</p>
-                        </a>
-                    </div>
-                </section>
-        
-        
-                    <!-- Why Alpha Study -->
-                    <div class="sidebar-column">
-                        <section class="content-section">
-                            <h2 class="section-title centered">Why Study Book</h2>
-                            <p class="section-description">Discover what makes our platform the preferred choice for engineering students.</p>
-                            <div class="features-grid">
-                                <div class="card feature-card">
-                                    <div class="icon-box blue-icon"><i class="fas fa-tag"></i></div>
-                                    <h3>Free & Simple</h3>
-                                    <p>No hidden fees, just pure learning.</p>
-                                </div>
-                                <div class="card feature-card purple-card">
-                                    <div class="icon-box purple-icon"><i class="fas fa-bullseye"></i></div>
-                                    <h3>Exam Focused</h3>
-                                    <p>Curated content for high scores.</p>
-                                </div>
-                                <div class="card feature-card">
-                                    <div class="icon-box blue-icon"><i class="fas fa-mobile-alt"></i></div>
-                                    <h3>Mobile Friendly</h3>
-                                    <p>Study on the go, anytime.</p>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-        
-                <!-- Share Notes Section -->
-                <section class="content-section centered">
-                    <h2 class="section-title">Share Your Notes</h2>
-                    <p class="section-description">Help your juniors and peers by sharing your notes and study materials.</p>
-                    <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="btn btn-purple">
-                        <i class="fas fa-upload"></i> Upload Notes
-                    </a>
-                </section>
-                <div style="margin-top: 50px; text-align: center;">
-                    <h3 style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(to right, var(--blue-accent), var(--purple-accent)); -webkit-background-clip: text; background-clip: text; color: transparent;">Study Book — Study Smarter. Score Better.</h3>
-                </div>
-        
-            </main>
-        
-            <!-- Footer -->
-            <footer class="footer container">
-                <!-- Footer Links -->
-                <div class="footer-links">
-                    <a href="about.html">About Us</a>
-                    <a href="contact.html">Contact Us</a>
-                    <a href="privacy_policy.html">Privacy Policy</a>
-                    <a href="terms_conditions.html">Terms & Conditions</a>
-                </div>
-                
-                <!-- Copyright -->
-                <p class="copyright">© 2026 Study Book. Built with ❤️ for students.</p>
-            </footer>
-        
-            <!-- Script -->
-            <script src="script.js"></script>
-        
-        </body>
-        </html>
-
-        <!-- navbar-links -->
-        <nav class="nav-links desktop-only">
-            <a href="index.html" class="active">Home</a>
-            <a href="notes.html">Notes</a>
-            <a href="pyqs.html">PYQs</a>
-            <a href="syllabus.html">Syllabus</a>
-            <a href="index.html#tools">Tools</a>
-        </nav>
-        <a href="login.html" class="btn btn-purple nav-btn desktop-only">Login / Register</a>
-    </header>
-
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1>Hello, What Do You Want To Study?</h1>
-                
-                <div class="search-bar">
-                    <i class="fas fa-search search-icon-left"></i>
-                    <input type="text" placeholder="Search notes, pyqs...">
-                </div>
-                
-                <div class="hero-quick-links">
-                    <a href="notes.html" class="quick-link-pill ">Notes</a>
-                    <a href="pyqs.html" class="quick-link-pill ">PYQs</a>
-                    <a href="syllabus.html" class="quick-link-pill hide-on-mobile">Syllabus</a>
-                    <a href="calculator.html" class="quick-link-pill hide-on-mobile">SGPA Calculator</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Content Section (Notes) -->
-        <section class="content-section" id="notes">
-            <h2 class="section-title">Notes for B Tech Students ( CSE & AIML )</h2>
-            <p class="section-description">Comprehensive study materials organized by year and semester to help you excel.</p>
-            
-            <div class="selection-grid">
-                <a href="notes.html?year=1" class="selection-card page-transition">
-                    <div class="selection-icon notes-icon"><i class="fas fa-seedling"></i></div>
-                    <h3>1st Year Notes</h3>
-                    <p>Common Subjects (Sem 1 & 2)</p>
-                </a>
-
-                <a href="notes.html?year=2" class="selection-card page-transition">
-                    <div class="selection-icon notes-icon"><i class="fas fa-code"></i></div>
-                    <h3>2nd Year Notes</h3>
-                    <p>Core CSE Subjects (Sem 3 & 4)</p>
-                </a>
-
-                <a href="notes.html?year=3" class="selection-card page-transition">
-                    <div class="selection-icon notes-icon"><i class="fas fa-brain"></i></div>
-                    <h3>3rd Year Notes</h3>
-                    <p>Advanced AI Subjects (Sem 5 & 6)</p>
-                </a>
-
-                <a href="notes.html?year=4" class="selection-card page-transition">
-                    <div class="selection-icon notes-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>4th Year Notes</h3>
-                    <p>Projects & Electives (Sem 7 & 8)</p>
-                </a>
-            </div>
-        </section>
-
-        <!-- Content Section (PYQs) -->
-        <section class="content-section" id="pyqs">
-            <h2 class="section-title" id="get-started">PYQs for B Tech students ( CSE & AIML )</h2>
-            <p class="section-description">Practice with previous year question papers to understand exam patterns and score better.</p>
-            
-            <div class="selection-grid">
-                <a href="pyqs.html?year=1" class="selection-card purple-selection-card page-transition">
-                    <div class="selection-icon purple-icon"><i class="fas fa-file-alt"></i></div>
-                    <h3>1st Year PYQs</h3>
-                    <p>Recent Question Papers (Sem 1 & 2)</p>
-                </a>
-
-                <a href="pyqs.html?year=2" class="selection-card purple-selection-card page-transition">
-                    <div class="selection-icon purple-icon"><i class="fas fa-file-code"></i></div>
-                    <h3>2nd Year PYQs</h3>
-                    <p>Recent Question Papers (Sem 3 & 4)</p>
-                </a>
-
-                <a href="pyqs.html?year=3" class="selection-card purple-selection-card page-transition">
-                    <div class="selection-icon purple-icon"><i class="fas fa-network-wired"></i></div>
-                    <h3>3rd Year PYQs</h3>
-                    <p>Recent Question Papers (Sem 5 & 6)</p>
-                </a>
-
-                <a href="pyqs.html?year=4" class="selection-card purple-selection-card page-transition">
-                    <div class="selection-icon purple-icon"><i class="fas fa-server"></i></div>
-                    <h3>4th Year PYQs</h3>
-                    <p>Recent Question Papers (Sem 7 & 8)</p>
-                </a>
-            </div>
-        </section>
-
-        <!-- Content Section (Syllabus) -->
-        <section class="content-section" id="syllabus">
-            <h2 class="section-title">Syllabus for B Tech ( CSE & AIML )</h2>
-            <p class="section-description">Stay on track with the latest university curriculum and course structures.</p>
-            
-            <div class="selection-grid">
-                <a href="syllabus.html?year=1" class="selection-card page-transition">
-                    <div class="selection-icon notes-icon"><i class="fas fa-map"></i></div>
-                    <h3>1st Year Syllabus</h3>
-                    <p>Complete Curriculum (Sem 1 & 2)</p>
-                </a>
-
-                <a href="syllabus.html?year=2" class="selection-card page-transition">
-                    <div class="selection-icon notes-icon"><i class="fas fa-layer-group"></i></div>
-                    <h3>2nd Year Syllabus</h3>
-                    <p>Core Syllabus (Sem 3 & 4)</p>
-                </a>
-
-                <a href="syllabus.html?year=3" class="selection-card page-transition">
-                    <div class="selection-icon notes-icon"><i class="fas fa-microchip"></i></div>
-                    <h3>3rd Year Syllabus</h3>
-                    <p>Specialization Syllabus (Sem 5 & 6)</p>
-                </a>
-
-                <a href="syllabus.html?year=4" class="selection-card page-transition">
-                    <div class="selection-icon notes-icon"><i class="fas fa-project-diagram"></i></div>
-                    <h3>4th Year Syllabus</h3>
-                    <p>Electives Syllabus (Sem 7 & 8)</p>
-                </a>
-            </div>
-        </section>
-
-        <!-- Content Section (Tools) -->
-        <section class="content-section" id="tools">
-            <h2 class="section-title">Study Tools for Students</h2>
-            <p class="section-description">Essential utilities and calculators designed to boost your academic productivity.</p>
-            
-            <div class="selection-grid">
-                <a href="calculator.html" class="selection-card purple-selection-card">
-                    <div class="selection-icon purple-icon"><i class="fas fa-calculator"></i></div>
-                    <h3>SGPA/CGPA Calculator</h3>
-                    <p>Calculate Semester & Cumulative GPA</p>
-                </a>
-
-                <a href="coming_soon.html" class="selection-card purple-selection-card">
-                    <div class="selection-icon purple-icon"><i class="fas fa-star"></i></div>
-                    <h3>Important Exam Questions</h3>
-                    <p>Curated topics for high scores</p>
-                </a>
-
-                <a href="coming_soon.html" class="selection-card purple-selection-card">
-                    <div class="selection-icon purple-icon"><i class="fas fa-square-root-variable"></i></div>
-                    <h3>Engineering Formula Sheets</h3>
-                    <p>Quick revision for all subjects</p>
-                </a>
-
-                <a href="coming_soon.html" class="selection-card purple-selection-card">
-                    <div class="selection-icon purple-icon"><i class="fas fa-file-pdf"></i></div>
-                    <h3>Student PDF Tools</h3>
-                    <p>Merge, Compress & Organize PDFs</p>
-                </a>
-            </div>
-        </section>
-
-
+            </section>
+    
             <!-- Why Alpha Study -->
-            <div class="sidebar-column">
-                <section class="content-section">
-                    <h2 class="section-title centered">Why Study Book</h2>
-                    <p class="section-description">Discover what makes our platform the preferred choice for engineering students.</p>
-                    <div class="features-grid">
-                        <div class="card feature-card">
-                            <div class="icon-box blue-icon"><i class="fas fa-tag"></i></div>
-                            <h3>Free & Simple</h3>
-                            <p>No hidden fees, just pure learning.</p>
-                        </div>
-                        <div class="card feature-card purple-card">
-                            <div class="icon-box purple-icon"><i class="fas fa-bullseye"></i></div>
-                            <h3>Exam Focused</h3>
-                            <p>Curated content for high scores.</p>
-                        </div>
-                        <div class="card feature-card">
-                            <div class="icon-box blue-icon"><i class="fas fa-mobile-alt"></i></div>
-                            <h3>Mobile Friendly</h3>
-                            <p>Study on the go, anytime.</p>
-                        </div>
+            <section class="content-section">
+                <h2 class="section-title centered">Why Study Book</h2>
+                <p class="section-description">Discover what makes our platform the preferred choice for engineering students.</p>
+                <div class="features-grid">
+                    <div class="card feature-card">
+                        <div class="icon-box blue-icon"><i class="fas fa-tag"></i></div>
+                        <h3>Free & Simple</h3>
+                        <p>No hidden fees, just pure learning.</p>
                     </div>
-                </section>
+                    <div class="card feature-card purple-card">
+                        <div class="icon-box purple-icon"><i class="fas fa-bullseye"></i></div>
+                        <h3>Exam Focused</h3>
+                        <p>Curated content for high scores.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="icon-box blue-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>Mobile Friendly</h3>
+                        <p>Study on the go, anytime.</p>
+                    </div>
+                </div>
+            </section>
+    
+            <!-- Share Notes Section -->
+            <section class="content-section centered">
+                <h2 class="section-title">Share Your Notes</h2>
+                <p class="section-description">Help your juniors and peers by sharing your notes and study materials.</p>
+                <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="btn btn-purple">
+                    <i class="fas fa-upload"></i> Upload Notes
+                </a>
+            </section>
+            <div style="margin-top: 50px; text-align: center;">
+                <h3 style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(to right, var(--blue-accent), var(--purple-accent)); -webkit-background-clip: text; background-clip: text; color: transparent;">Study Book — Study Smarter. Score Better.</h3>
             </div>
-        </div>
-
-        <!-- Share Notes Section -->
-        <section class="content-section centered">
-            <h2 class="section-title">Share Your Notes</h2>
-            <p class="section-description">Help your juniors and peers by sharing your notes and study materials.</p>
-            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="btn btn-purple">
-                <i class="fas fa-upload"></i> Upload Notes
-            </a>
-        </section>
-        <div style="margin-top: 50px; text-align: center;">
-            <h3 style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(to right, var(--blue-accent), var(--purple-accent)); -webkit-background-clip: text; background-clip: text; color: transparent;">Study Book — Study Smarter. Score Better.</h3>
-        </div>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer container">
-        <!-- Footer Links -->
-        <div class="footer-links">
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="privacy_policy.html">Privacy Policy</a>
-            <a href="terms_conditions.html">Terms & Conditions</a>
-        </div>
-        
-        <!-- Copyright -->
-        <p class="copyright">© 2026 Study Book. Built with ❤️ for students.</p>
-    </footer>
-
-    <!-- Script -->
-    <script src="script.js"></script>
-
-</body>
-</html>
+    
+        </main>
+    
+        <!-- Footer -->
+        <footer class="footer container">
+            <!-- Footer Links -->
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy_policy.html">Privacy Policy</a>
+                <a href="terms_conditions.html">Terms & Conditions</a>
+            </div>
+            
+            <!-- Copyright -->
+            <p class="copyright">© 2026 Study Book. Built with ❤️ for students.</p>
+        </footer>
+    
+        <!-- Script -->
+        <script src="script.js"></script>
+        <!-- Firebase Auth & Storage Module -->
+        <script type="module" src="auth.js"></script>
+    
+    </body>
+    </html>

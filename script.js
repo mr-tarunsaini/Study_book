@@ -1,3 +1,74 @@
+// --- Global Toast Notification System ---
+window.showToast = function(message, type = 'info') {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        container.className = 'toast-container';
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    
+    let icon = 'fa-info-circle';
+    if (type === 'success') icon = 'fa-check-circle';
+    if (type === 'error') icon = 'fa-exclamation-circle';
+    if (type === 'warning') icon = 'fa-exclamation-triangle';
+
+    toast.innerHTML = `<i class="fas ${icon}"></i> <span style="font-weight: 500; font-size: 0.95rem;">${message}</span>`;
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add('hiding');
+        setTimeout(() => toast.remove(), 300);
+    }, 3500); // Hide after 3.5 seconds
+};
+
+// --- Global Custom Confirm Modal ---
+window.showConfirm = function(title, message, isDanger = false) {
+    return new Promise((resolve) => {
+        let overlay = document.getElementById('confirm-modal-overlay');
+        
+        if (!overlay) {
+            const html = `
+                <div class="confirm-modal-overlay" id="confirm-modal-overlay">
+                    <div class="confirm-modal">
+                        <i class="fas fa-question-circle confirm-icon" id="confirm-icon"></i>
+                        <h3 class="confirm-title" id="confirm-title"></h3>
+                        <p class="confirm-message" id="confirm-message"></p>
+                        <div class="confirm-actions">
+                            <button class="btn btn-outline" id="confirm-cancel-btn">Cancel</button>
+                            <button class="btn btn-blue" id="confirm-ok-btn">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', html);
+            overlay = document.getElementById('confirm-modal-overlay');
+        }
+
+        const icon = document.getElementById('confirm-icon');
+        const okBtn = document.getElementById('confirm-ok-btn');
+        const cancelBtn = document.getElementById('confirm-cancel-btn');
+
+        document.getElementById('confirm-title').textContent = title;
+        document.getElementById('confirm-message').textContent = message;
+        
+        icon.className = isDanger ? 'fas fa-exclamation-triangle confirm-icon danger' : 'fas fa-question-circle confirm-icon';
+        okBtn.className = isDanger ? 'btn btn-danger' : 'btn btn-blue';
+        okBtn.textContent = isDanger ? 'Delete' : 'Confirm';
+
+        const close = (result) => {
+            overlay.classList.remove('active');
+            resolve(result);
+        };
+        okBtn.onclick = () => close(true);
+        cancelBtn.onclick = () => close(false);
+        setTimeout(() => overlay.classList.add('active'), 10);
+    });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('menu-btn');
     const closeBtn = document.getElementById('close-btn');
@@ -139,6 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     link.classList.add('active');
                 } else if (page === 'terms_conditions.html' && href.includes('terms_conditions.html')) {
                     link.classList.add('active');
+                } else if (page === 'account.html' && href.includes('login.html')) {
+                    link.classList.add('active'); // Keep profile icon active on account page
                 } else if (page === 'coming_soon.html' && href === 'index.html') {
                     link.classList.add('active');
                 } else if (page === 'login.html' && href.includes('login.html')) {
@@ -154,6 +227,106 @@ document.addEventListener('DOMContentLoaded', () => {
     // Run on scroll only for index page
     if (page === 'index.html') {
         window.addEventListener('scroll', setActiveLink);
+    }
+    
+    // Specific manual override for Viewer theme toggle binding
+    const viewerThemeBtn = document.getElementById('theme-toggle-viewer');
+    if (viewerThemeBtn) viewerThemeBtn.addEventListener('click', () => themeBtns[0].click());
+
+    // --- Live Search Logic (Studocu Style) ---
+    if (page === 'index.html') {
+        const homeSearchInput = document.getElementById('home-search-input');
+        const searchBar = document.getElementById('home-search-bar');
+        const resultsDropdown = document.getElementById('live-search-results');
+        
+        if (homeSearchInput && resultsDropdown) {
+            let allMaterials = null;
+
+            homeSearchInput.addEventListener('input', async (e) => {
+                const q = e.target.value.toLowerCase().trim();
+                
+                if (q.length < 2) {
+                    resultsDropdown.classList.remove('active');
+                    searchBar.classList.remove('active-dropdown');
+                    return;
+                }
+
+                if (!allMaterials) {
+                    resultsDropdown.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-light);"><i class="fas fa-spinner fa-spin"></i> Searching database...</div>';
+                    resultsDropdown.classList.add('active');
+                    searchBar.classList.add('active-dropdown');
+                    
+                    if (window.searchMaterialsFirestore) {
+                        allMaterials = await window.searchMaterialsFirestore();
+                    } else {
+                        // Fallback if Firebase hasn't loaded fully yet
+                        return;
+                    }
+                }
+
+                const filtered = allMaterials.filter(mat => {
+                    return (mat.title && mat.title.toLowerCase().includes(q)) || 
+                           (mat.subject && mat.subject.toLowerCase().includes(q)) ||
+                           (mat.description && mat.description.toLowerCase().includes(q)) ||
+                           (mat.course && mat.course.toLowerCase().includes(q)) ||
+                           (mat.branch && mat.branch.toLowerCase().includes(q));
+                }).slice(0, 5); // Show top 5 best results
+
+                if (filtered.length > 0) {
+                    resultsDropdown.innerHTML = '';
+                    filtered.forEach(mat => {
+                        let iconClass = mat.type && mat.type.includes('PYQ') ? 'fa-file-circle-question' : 'fa-file-alt';
+                        let iconColorStyle = mat.type && mat.type.includes('PYQ') ? 'color: var(--purple-accent); background: var(--icon-bg-purple);' : '';
+                        
+                        const metaParts = [];
+                        if (mat.course) metaParts.push(mat.course);
+                        if (mat.branch) metaParts.push(mat.branch);
+                        if (mat.subject) metaParts.push(mat.subject);
+                        metaParts.push(mat.type || 'Notes');
+
+                        const itemHTML = `
+                            <a href="${mat.fileUrl}" target="_blank" class="live-search-item">
+                                <div class="live-search-icon" style="${iconColorStyle}"><i class="fas ${iconClass}"></i></div>
+                                <div class="live-search-text">
+                                    <span class="live-search-title">${mat.title}</span>
+                                    <span class="live-search-subtitle">${metaParts.join(' • ')}</span>
+                                </div>
+                            </a>
+                        `;
+                        resultsDropdown.insertAdjacentHTML('beforeend', itemHTML);
+                    });
+                    
+                    resultsDropdown.insertAdjacentHTML('beforeend', `
+                        <a href="search.html?q=${encodeURIComponent(q)}" class="live-search-item view-all-link">
+                            See all results for "${e.target.value}" <i class="fas fa-arrow-right"></i>
+                        </a>
+                    `);
+                } else {
+                    resultsDropdown.innerHTML = `
+                        <div style="padding: 20px; text-align: center; color: var(--text-light);">
+                            No results found for "<b>${e.target.value}</b>"<br>
+                            <span style="font-size: 0.85rem; margin-top: 5px; display: inline-block;">Try searching by subject or topic</span>
+                        </div>
+                    `;
+                }
+            });
+
+            // Hide dropdown when user clicks somewhere else
+            document.addEventListener('click', (e) => {
+                if (!searchBar.contains(e.target) && !resultsDropdown.contains(e.target)) {
+                    resultsDropdown.classList.remove('active');
+                    searchBar.classList.remove('active-dropdown');
+                }
+            });
+            
+            // Show dropdown again if they click back into the input with text inside
+            homeSearchInput.addEventListener('focus', () => {
+                if (homeSearchInput.value.trim().length >= 2) {
+                    resultsDropdown.classList.add('active');
+                    searchBar.classList.add('active-dropdown');
+                }
+            });
+        }
     }
 
     // Tab Switching Logic for Notes Page
@@ -380,7 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resultBox.querySelector('span').textContent = sgpa;
             resultBox.classList.add('show');
         } else {
-            alert('Please enter valid credits and grades/marks.');
+            window.showToast('Please enter valid credits and grades/marks.', 'error');
         }
     }
 
@@ -394,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resultBox.querySelector('span').textContent = ygpa;
             resultBox.classList.add('show');
         } else {
-            alert('Please enter valid SGPA for both semesters.');
+            window.showToast('Please enter valid SGPA for both semesters.', 'error');
         }
     }
 
@@ -417,7 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resultBox.querySelector('span').textContent = cgpa;
             resultBox.classList.add('show');
         } else {
-            alert('Please enter SGPA for at least one semester.');
+            window.showToast('Please enter SGPA for at least one semester.', 'error');
         }
     }
 
@@ -554,7 +727,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Profile UI Update (Login Simulation) ---
-    const updateProfileUI = () => {
+    window.updateProfileUI = () => {
         const userName = localStorage.getItem('userName');
         if (userName) {
             const firstLetter = userName.charAt(0).toUpperCase();
@@ -563,30 +736,923 @@ document.addEventListener('DOMContentLoaded', () => {
             const profileLinks = document.querySelectorAll('.profile-link');
             profileLinks.forEach(link => {
                 link.innerHTML = `<div class="user-avatar">${firstLetter}</div> <span>${userName}</span>`;
-                link.href = '#'; 
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (confirm('Do you want to log out?')) {
-                        localStorage.removeItem('userName');
-                        window.location.reload();
-                    }
-                });
+                link.href = 'account.html'; 
             });
 
             // Update navbar login button
             const navLoginBtns = document.querySelectorAll('.nav-btn[href="login.html"]');
             navLoginBtns.forEach(btn => {
                 btn.innerHTML = `<div class="user-avatar nav-avatar" style="background-color: rgba(255,255,255,0.2);">${firstLetter}</div> <span>${userName}</span>`;
-                btn.href = '#';
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (confirm('Do you want to log out?')) {
-                        localStorage.removeItem('userName');
-                        window.location.reload();
-                    }
-                });
+                btn.href = 'account.html';
             });
+            
+            // Update specialized Search Navbar profile icon specifically
+            const searchNavProfile = document.getElementById('search-nav-profile');
+            if (searchNavProfile) {
+                searchNavProfile.innerHTML = `<div class="user-avatar nav-avatar" style="margin:0; background-color: var(--blue-accent); color: white;">${firstLetter}</div>`;
+            }
         }
     };
-    updateProfileUI();
+    window.updateProfileUI();
+
+    // Intercept local static PDF links to open in viewer.html
+    document.body.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        // Match specific local static viewing links (exclude download links)
+        if (link && link.href && !link.hasAttribute('download')) {
+            const href = link.getAttribute('href');
+            if (href && href.toLowerCase().endsWith('.pdf') && !href.startsWith('http')) {
+                e.preventDefault();
+                const absoluteUrl = new URL(href, window.location.href).href;
+                let title = 'Study Material';
+                const card = link.closest('.subject-card');
+                if (card) title = (card.querySelector('h3') ? card.querySelector('h3').textContent : '') + ' - ' + (link.closest('.unit-item') ? link.closest('.unit-item').querySelector('span').textContent : '');
+                window.open(`viewer.html?file=${encodeURIComponent(absoluteUrl)}&title=${encodeURIComponent(title)}`, '_blank');
+            }
+        }
+    });
+
+    // --- Viewer Page Specific Logic ---
+    if (page === 'viewer.html') {
+        const infoBtn = document.getElementById('v-info-btn');
+        const closeInfoBtn = document.getElementById('v-close-info-btn');
+        const infoPanel = document.getElementById('v-info-panel');
+        const likeBtn = document.getElementById('v-like-btn');
+        const likeCount = document.getElementById('v-like-count');
+        const shareBtn = document.getElementById('v-share-btn');
+        const viewerOverlay = document.createElement('div');
+
+        // Parse Dynamic URL Parameters to load specific PDF
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileUrl = urlParams.get('file') || 'https://firebasestorage.googleapis.com/v0/b/studybook-15297.firebasestorage.app/o/uploads%2Fstudy-materials%2F1774148361381_Engineering_Physics_2024-25.pdf?alt=media&token=0db344ad-b233-4c61-9bad-c84a8fd95ae2';
+        const fileTitle = urlParams.get('title');
+        
+        if (fileTitle) {
+            const docTitle = document.querySelector('.v-doc-title');
+            if (docTitle) { docTitle.textContent = fileTitle; docTitle.title = fileTitle; }
+            document.title = `${fileTitle} - Study Book`;
+        }
+
+        // --- PDF.js Integration Engine ---
+        if (fileUrl && typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            
+            let pdfDoc = null,
+                scale = 1.5,
+                container = document.getElementById('pdf-render-container');
+                
+            if (container) {
+                const renderPage = (num, canvas) => {
+                    pdfDoc.getPage(num).then((page) => {
+                        
+                        let renderScale = scale;
+                        if (window.innerWidth < 768 && scale === 1.5) {
+                            const viewport = page.getViewport({scale: 1});
+                            renderScale = (window.innerWidth - 60) / viewport.width;
+                        }
+                        
+                        const viewport = page.getViewport({scale: renderScale});
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        canvas.style.minHeight = 'auto'; // Remove placeholder height once rendered
+
+                        const ctx = canvas.getContext('2d');
+                        const renderContext = { canvasContext: ctx, viewport: viewport };
+                        page.render(renderContext);
+                    });
+                };
+
+                let currentObserver = null;
+                const setupProgressiveRendering = () => {
+                    container.innerHTML = ''; // Clear previous renders
+                    if (currentObserver) {
+                        currentObserver.disconnect();
+                    }
+                    
+                    currentObserver = new IntersectionObserver((entries, obs) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const canvas = entry.target;
+                                const pageNum = parseInt(canvas.dataset.pageNumber, 10);
+                                if (!canvas.dataset.rendered) {
+                                    renderPage(pageNum, canvas);
+                                    canvas.dataset.rendered = 'true';
+                                }
+                                obs.unobserve(canvas); // Stop observing once rendered
+                            }
+                        });
+                    }, {
+                        root: container,
+                        rootMargin: '200% 0px 200% 0px', // Render a bit ahead of scroll
+                        threshold: 0
+                    });
+
+                    for (let i = 1; i <= pdfDoc.numPages; i++) {
+                        const canvas = document.createElement('canvas');
+                        canvas.id = `pdf-canvas-${i}`;
+                        canvas.dataset.pageNumber = i;
+                        canvas.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
+                        canvas.style.maxWidth = '100%';
+                        canvas.style.backgroundColor = '#ffffff'; // White placeholder
+                        canvas.style.minHeight = window.innerWidth < 768 ? '400px' : '800px'; // Prevent scroll-jumping
+                        container.appendChild(canvas);
+                        currentObserver.observe(canvas);
+                    }
+                };
+
+                document.getElementById('zoom-in-btn').addEventListener('click', () => {
+                    scale += 0.25; setupProgressiveRendering();
+                });
+                document.getElementById('zoom-out-btn').addEventListener('click', () => {
+                    if (scale <= 0.5) return;
+                    scale -= 0.25; setupProgressiveRendering();
+                });
+
+                const fullscreenBtn = document.getElementById('fullscreen-btn');
+                if (fullscreenBtn) {
+                    fullscreenBtn.addEventListener('click', () => {
+                        const viewerContainer = document.getElementById('pdf-viewer-container');
+                        if (!document.fullscreenElement) {
+                            viewerContainer.requestFullscreen().catch(err => {
+                                console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                            });
+                        } else {
+                            document.exitFullscreen();
+                        }
+                    });
+
+                    document.addEventListener('fullscreenchange', () => {
+                        if (document.fullscreenElement) {
+                            fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+                            fullscreenBtn.title = 'Exit Full Screen';
+                        } else {
+                            fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                            fullscreenBtn.title = 'Full Screen';
+                        }
+                    });
+                }
+
+                // Fetch and Render PDF
+                pdfjsLib.getDocument(fileUrl).promise.then((pdfDoc_) => {
+                    pdfDoc = pdfDoc_;
+                    document.getElementById('page-num-text').textContent = `${pdfDoc.numPages} Pages`;
+                    setupProgressiveRendering();
+                }).catch(error => {
+                    console.error("Error loading PDF:", error);
+                    document.getElementById('page-num-text').textContent = "Error loading PDF";
+                });
+            }
+        }
+        
+        // Fetch Real Document Metadata & Update Info Sidebar
+        const loadDocumentMetadata = async () => {
+            if (!window.getMaterialByUrl) {
+                setTimeout(loadDocumentMetadata, 500);
+                return;
+            }
+            
+            const mat = await window.getMaterialByUrl(fileUrl);
+            if (mat) {
+                // Update text fields
+                document.getElementById('v-doc-desc').textContent = mat.description || 'No description provided.';
+                document.getElementById('v-doc-uni').textContent = mat.college || mat.university || 'N/A';
+                document.getElementById('v-doc-course').textContent = mat.course || 'N/A';
+                document.getElementById('v-doc-subject').textContent = mat.subject || 'N/A';
+                
+                // Update top bar meta tag
+                const docMeta = document.querySelector('.v-doc-meta');
+                if (docMeta) {
+                    const metaParts = [];
+                    if (mat.course) metaParts.push(mat.course);
+                    if (mat.branch) metaParts.push(mat.branch);
+                    
+                    if (metaParts.length > 0) {
+                        docMeta.textContent = metaParts.join(' • ');
+                    } else {
+                        docMeta.textContent = mat.type || 'Study Material';
+                    }
+                }
+                
+                const date = new Date(mat.createdAt).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' });
+                document.getElementById('v-uploader-date').textContent = `Uploaded on ${date}`;
+                
+                // Handle Like State
+                const uid = localStorage.getItem('userUid');
+                const likedBy = mat.likedBy || [];
+                if (likeBtn) {
+                    likeBtn.dataset.docId = mat.id; // Store ID for click events
+                    const isLiked = uid && likedBy.includes(uid);
+                    likeBtn.classList.toggle('liked', isLiked);
+                    likeBtn.innerHTML = `<i class="fa${isLiked ? 's' : 'r'} fa-heart"></i> <span id="v-like-count">${likedBy.length}</span>`;
+                }
+                
+                // Fetch Uploader User Profile
+                if (mat.uploaderUid && window.getUserProfile) {
+                    const uploaderProfile = await window.getUserProfile(mat.uploaderUid);
+                    const uploaderName = (uploaderProfile && uploaderProfile.name) || 'Anonymous User';
+                    document.getElementById('v-uploader-name').textContent = uploaderName;
+                    document.getElementById('v-uploader-avatar').textContent = uploaderName.charAt(0).toUpperCase();
+                    
+                    const uploaderCourseUniv = document.getElementById('v-uploader-course-univ');
+                    if (uploaderCourseUniv && uploaderProfile) {
+                        const parts = [];
+                        if (uploaderProfile.course) parts.push(uploaderProfile.course);
+                        if (uploaderProfile.college) parts.push(uploaderProfile.college);
+                        uploaderCourseUniv.textContent = parts.join(' • ');
+                    }
+
+                    // Fallback to update document course/university from uploader profile if missing
+                    if (!mat.college && !mat.university && uploaderProfile && uploaderProfile.college) {
+                        document.getElementById('v-doc-uni').textContent = uploaderProfile.college;
+                    }
+                    if (!mat.course && uploaderProfile && uploaderProfile.course) {
+                        document.getElementById('v-doc-course').textContent = uploaderProfile.course;
+                    }
+                }
+            } else {
+                // Fallback for static PDFs not in Firestore Database
+                document.getElementById('v-doc-desc').textContent = 'Locally hosted or static system file.';
+                document.getElementById('v-doc-uni').textContent = 'Not Specified';
+                document.getElementById('v-doc-course').textContent = 'Not Specified';
+                document.getElementById('v-doc-subject').textContent = 'General Subject';
+                document.getElementById('v-uploader-date').textContent = 'System Default';
+                document.getElementById('v-uploader-name').textContent = 'System Admin';
+                document.getElementById('v-uploader-avatar').textContent = 'S';
+                document.getElementById('v-uploader-course-univ').textContent = 'Study Book Official';
+            }
+        };
+        loadDocumentMetadata();
+
+        viewerOverlay.className = 'sidebar-overlay'; 
+        document.body.appendChild(viewerOverlay);
+
+        // Panel Toggles
+        const togglePanel = () => {
+            infoPanel.classList.toggle('active');
+            if (window.innerWidth <= 768) {
+                viewerOverlay.classList.toggle('active');
+            }
+        };
+        if (infoBtn) infoBtn.addEventListener('click', togglePanel);
+        if (closeInfoBtn) closeInfoBtn.addEventListener('click', togglePanel);
+        viewerOverlay.addEventListener('click', togglePanel);
+
+        // Real Like Functionality
+        if (likeBtn) {
+            likeBtn.addEventListener('click', async () => {
+                const docId = likeBtn.dataset.docId;
+                const uid = localStorage.getItem('userUid');
+                
+                if (!uid) {
+                    window.showToast('Please log in to like notes.', 'warning');
+                    return;
+                }
+                if (!docId) return; // Document not loaded yet
+
+                // Optimistic UI update
+                const isLiked = likeBtn.classList.toggle('liked');
+                const currentCount = parseInt(document.getElementById('v-like-count').textContent) || 0;
+                likeBtn.innerHTML = `<i class="fa${isLiked ? 's' : 'r'} fa-heart"></i> <span id="v-like-count">${isLiked ? currentCount + 1 : currentCount - 1}</span>`;
+                
+                try {
+                    if (window.toggleLikeMaterial) {
+                        const result = await window.toggleLikeMaterial(docId, uid);
+                        likeBtn.innerHTML = `<i class="fa${result.isLiked ? 's' : 'r'} fa-heart"></i> <span id="v-like-count">${result.count}</span>`;
+                    }
+                } catch (error) {
+                    likeBtn.classList.toggle('liked', !isLiked);
+                    likeBtn.innerHTML = `<i class="fa${!isLiked ? 's' : 'r'} fa-heart"></i> <span id="v-like-count">${currentCount}</span>`;
+                    window.showToast('Failed to update like status.', 'error');
+                }
+            });
+        }
+
+        // Share Functionality (Native Share on Mobile, Clipboard Fallback)
+        if (shareBtn) {
+            shareBtn.addEventListener('click', async () => {
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: document.title,
+                            url: window.location.href
+                        });
+                    } catch (error) {
+                        console.log('Error sharing:', error);
+                    }
+                } else {
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                        window.showToast('Document link copied to clipboard!', 'success');
+                    }).catch(() => {
+                        window.showToast('Failed to copy link.', 'error');
+                    });
+                }
+            });
+        }
+    }
+
+    // --- Upload Notes Modal Injection & Logic ---
+    const uploadModalHTML = `
+        <div class="modal-overlay" id="upload-modal-overlay">
+            <div class="upload-modal">
+                <div class="modal-header">
+                    <h2>Upload Study Material</h2>
+                    <button type="button" class="close-modal-btn" id="close-upload-modal"><i class="fas fa-times"></i></button>
+                </div>
+                <form id="upload-material-form" class="upload-form">
+                    <div class="form-group">
+                        <label class="form-label">Title <span class="required">*</span></label>
+                        <input type="text" class="form-input" id="upload-title" placeholder="e.g., Data Structures Chapter 1 Notes" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject / Course Name <span class="required">*</span></label>
+                        <input type="text" class="form-input" id="upload-subject" placeholder="e.g., Data Structures (CS-301)" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Resource Type <span class="required">*</span></label>
+                        <select class="form-input" id="upload-type" required>
+                            <option value="" disabled selected>Select resource type</option>
+                            <option value="Class Notes">Class Notes</option>
+                            <option value="Exam Preparation Notes">Exam Preparation Notes</option>
+                            <option value="Previous Year Questions (PYQs)">Previous Year Questions (PYQs)</option>
+                            <option value="Tutorial Sheets / Assignments">Tutorial Sheets / Assignments</option>
+                            <option value="Important Questions">Important Questions</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description <span style="color:var(--text-light);font-size:0.85rem;font-weight:normal;">(Optional)</span></label>
+                        <textarea class="form-textarea" id="upload-desc" placeholder="Add any extra details about the file..." style="min-height: 80px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">File Upload (PDF only, Max 10MB) <span class="required">*</span></label>
+                        <div class="file-upload-area" id="file-drop-area">
+                            <input type="file" id="upload-file" accept=".pdf" hidden>
+                            <div class="file-upload-label" id="file-upload-label">
+                                <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                                <span class="file-upload-text">Click to browse or drag & drop</span>
+                                <span class="file-upload-hint">Only .pdf files are supported</span>
+                            </div>
+                            <div class="selected-file-info" id="selected-file-info" style="display: none;">
+                                <div class="selected-file-left">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span id="selected-file-name">filename.pdf</span>
+                                </div>
+                                <button type="button" id="remove-file-btn"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div id="file-warning-msg" class="file-msg warning-msg" style="display: none;">⚠️ Large file detected. For better performance, please upload a compressed PDF if possible.</div>
+                        <div id="file-error-msg" class="file-msg error-msg" style="display: none;">❌ File exceeds the 10MB limit. Please upload a smaller file.</div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-outline" id="cancel-upload-btn">Cancel</button>
+                        <button type="submit" class="btn btn-purple" id="submit-upload-btn">Upload Material</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', uploadModalHTML);
+
+    const uploadModal = document.getElementById('upload-modal-overlay');
+    const uploadForm = document.getElementById('upload-material-form');
+    const fileDropArea = document.getElementById('file-drop-area');
+    const fileInput = document.getElementById('upload-file');
+    const fileLabel = document.getElementById('file-upload-label');
+    const fileInfo = document.getElementById('selected-file-info');
+    const fileNameDisplay = document.getElementById('selected-file-name');
+    const removeFileBtn = document.getElementById('remove-file-btn');
+    const fileWarning = document.getElementById('file-warning-msg');
+    const fileError = document.getElementById('file-error-msg');
+    const submitBtn = document.getElementById('submit-upload-btn');
+
+    const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+    const WARNING_FILE_SIZE = 7 * 1024 * 1024; // 7MB
+
+    // Intercept Google Form Links
+    // Use event delegation so dynamically injected buttons (like empty states) work too
+    document.body.addEventListener('click', async (e) => {
+        const link = e.target.closest('a[href*="forms.gle"]');
+        if (link) {
+            e.preventDefault();
+            
+            // 1. Check if user is logged in
+            const uid = localStorage.getItem('userUid');
+            if (!uid) {
+                window.showToast('Please log in to upload study materials.', 'warning');
+                setTimeout(() => window.location.href = 'login.html', 1500);
+                return;
+            }
+
+            // 2. Check if the user's profile is complete
+            if (window.getUserProfile) {
+                document.body.style.cursor = 'wait'; // Show loading state
+                const profile = await window.getUserProfile(uid);
+                document.body.style.cursor = 'default';
+                
+                if (!profile || !profile.college || !profile.course || !profile.branch) {
+                    window.showToast('Please complete your profile (College, Course, and Branch) in the Account page before uploading materials.', 'warning');
+                    setTimeout(() => window.location.href = 'account.html', 1500);
+                    return;
+                }
+            }
+
+            uploadModal.classList.add('active');
+            if (window.innerWidth <= 768) closeSidebar();
+        }
+    });
+
+    const resetFileUploadUI = () => {
+        fileInput.value = '';
+        fileLabel.style.display = 'flex';
+        fileInfo.style.display = 'none';
+        fileWarning.style.display = 'none';
+        fileError.style.display = 'none';
+        submitBtn.disabled = false;
+        fileDropArea.classList.remove('has-error');
+    };
+
+    const closeUploadModal = () => {
+        uploadModal.classList.remove('active');
+        setTimeout(() => {
+            uploadForm.reset();
+            resetFileUploadUI();
+        }, 300);
+    };
+
+    document.getElementById('close-upload-modal').addEventListener('click', closeUploadModal);
+    document.getElementById('cancel-upload-btn').addEventListener('click', closeUploadModal);
+    uploadModal.addEventListener('click', (e) => {
+        if (e.target === uploadModal) closeUploadModal();
+    });
+
+    const handleFile = (file) => {
+        if (!file) return resetFileUploadUI();
+
+        if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+            fileError.innerHTML = '❌ Only PDF files are supported.';
+            fileError.style.display = 'flex';
+            fileWarning.style.display = 'none';
+            submitBtn.disabled = true;
+            fileDropArea.classList.add('has-error');
+            return;
+        }
+
+        fileNameDisplay.textContent = file.name;
+        fileLabel.style.display = 'none';
+        fileInfo.style.display = 'flex';
+        fileDropArea.classList.remove('has-error');
+
+        if (file.size > MAX_FILE_SIZE) {
+            fileError.innerHTML = '❌ File exceeds the 10MB limit. Please upload a smaller file.';
+            fileError.style.display = 'flex';
+            fileWarning.style.display = 'none';
+            submitBtn.disabled = true;
+            fileDropArea.classList.add('has-error');
+        } else if (file.size > WARNING_FILE_SIZE) {
+            fileWarning.style.display = 'flex';
+            fileError.style.display = 'none';
+            submitBtn.disabled = false;
+        } else {
+            fileWarning.style.display = 'none';
+            fileError.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    };
+
+    fileDropArea.addEventListener('click', (e) => {
+        if (e.target !== removeFileBtn && e.target !== removeFileBtn.querySelector('i')) fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+    removeFileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        resetFileUploadUI();
+    });
+
+    // Drag and Drop
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        fileDropArea.addEventListener(eventName, e => { e.preventDefault(); e.stopPropagation(); }, false);
+    });
+    ['dragenter', 'dragover'].forEach(eventName => {
+        fileDropArea.addEventListener(eventName, () => fileDropArea.classList.add('dragover'), false);
+    });
+    ['dragleave', 'drop'].forEach(eventName => {
+        fileDropArea.addEventListener(eventName, () => fileDropArea.classList.remove('dragover'), false);
+    });
+    fileDropArea.addEventListener('drop', (e) => {
+        if (e.dataTransfer.files.length) {
+            fileInput.files = e.dataTransfer.files;
+            handleFile(e.dataTransfer.files[0]);
+        }
+    });
+
+    // --- Search Page Logic (Modern UI Update) ---
+    if (page === 'search.html') {
+        const topSearchForm = document.getElementById('top-search-form');
+        const topSearchInput = document.getElementById('top-search-input');
+        const advancedToggle = document.getElementById('advanced-filter-toggle');
+        const advancedPanel = document.getElementById('advanced-filters-panel');
+        const resultsGrid = document.getElementById('search-results-grid');
+        const resultsInfo = document.getElementById('search-results-info');
+        const activeFiltersContainer = document.getElementById('active-filters-container');
+
+        let allMaterials = [];
+        let currentSearchTerm = '';
+
+        const params = new URLSearchParams(window.location.search);
+        currentSearchTerm = params.get('q') || '';
+        if (topSearchInput) topSearchInput.value = currentSearchTerm;
+
+        // Generate High-Quality Dummy JSON Data (as requested) to combine with Firebase
+        const dummyData = [
+            { id: 'd1', title: 'Data Structures and Algorithms Complete Notes', subject: 'Computer Science', type: 'Notes', course: 'B.Tech', createdAt: new Date().toISOString(), university: 'AKTU', rating: 4.8, pages: 124, fileUrl: '#', views: 15420, year: '2', isPaid: false },
+            { id: 'd2', title: 'Engineering Mathematics IV - PYQ 2023', subject: 'Mathematics', type: 'PYQ', course: 'B.Tech', createdAt: new Date(Date.now() - 86400000).toISOString(), university: 'DU', rating: 4.5, pages: 12, fileUrl: '#', views: 5320, year: '2', isPaid: false },
+            { id: 'd3', title: 'Operating Systems System Concepts', subject: 'Computer Science', type: 'Books', course: 'BCA', createdAt: new Date(Date.now() - 500000000).toISOString(), university: 'GLA University', rating: 4.9, pages: 940, fileUrl: '#', views: 89000, year: '3', isPaid: false },
+            { id: 'd4', title: 'Physics Formula Cheat Sheet', subject: 'Physics', type: 'Short Notes', course: 'B.Sc', createdAt: new Date(Date.now() - 200000).toISOString(), university: 'AKTU', rating: 4.2, pages: 3, fileUrl: '#', views: 1200, year: '1', isPaid: false },
+            { id: 'd5', title: 'Introduction to AI Premium Course', subject: 'Artificial Intelligence', type: 'Courses', course: 'B.Tech', createdAt: new Date(Date.now() - 9000000).toISOString(), university: 'AKTU', rating: 5.0, pages: 55, fileUrl: '#', views: 24500, year: '4', isPaid: true },
+            { id: 'd6', title: 'DBMS Semester Important Questions', subject: 'Database', type: 'Notes', course: 'MCA', createdAt: new Date(Date.now() - 1500000).toISOString(), university: 'DU', rating: 4.6, pages: 20, fileUrl: '#', views: 4200, year: '3', isPaid: false }
+        ];
+
+        const renderSkeletons = () => {
+            resultsGrid.innerHTML = '';
+            for (let i = 0; i < 8; i++) {
+                resultsGrid.insertAdjacentHTML('beforeend', `
+                    <div class="document-card" style="min-height: 250px;">
+                        <div class="doc-preview-container skeleton-img" style="height: 180px; box-shadow: none;"></div>
+                        <div class="doc-info" style="padding-top: 20px;">
+                            <div class="skeleton-text medium" style="margin: 0 0 10px 0;"></div>
+                            <div class="skeleton-text short" style="margin: 0;"></div>
+                        </div>
+                    </div>
+                `);
+            }
+        };
+
+        const renderCards = (filtered) => {
+            if (filtered.length === 0) {
+                resultsGrid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1/-1; border: none; background: transparent;">
+                        <i class="fas fa-search" style="font-size: 4rem; color: var(--border-color); margin-bottom: 20px;"></i>
+                        <h3 style="font-size: 1.4rem; color: var(--text-dark); margin-bottom: 10px;">No Results Found</h3>
+                        <p style="font-size: 1rem; color: var(--text-light); max-width: 400px; margin: 0 auto 20px auto;">Try adjusting your search terms, changing the filters, or removing the advanced options.</p>
+                    </div>
+                `;
+                resultsInfo.textContent = `Found 0 results for "${currentSearchTerm}"`;
+                return;
+            }
+
+            resultsGrid.innerHTML = '';
+            resultsInfo.textContent = `Showing ${filtered.length} result${filtered.length > 1 ? 's' : ''}`;
+            
+            filtered.forEach((mat, index) => {
+                const diffDays = Math.floor(Math.abs(new Date() - new Date(mat.createdAt)) / (1000 * 60 * 60 * 24));
+                const timeAgo = diffDays === 0 ? 'Today' : diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
+                
+                let iconColor = (mat.type && mat.type.includes('PYQ')) ? 'color: var(--purple-accent);' : '';
+
+                const cardHTML = `
+                    <a href="viewer.html?file=${encodeURIComponent(mat.fileUrl)}&title=${encodeURIComponent(mat.title || 'Study Material')}" target="_blank" class="document-card">
+                        <div class="doc-preview-container"><i class="fas fa-file-pdf doc-preview-icon" style="${iconColor}"></i></div>
+                        <div class="doc-info">
+                            <h3 class="doc-title">${mat.title}</h3>
+                            <span class="doc-subtitle">${mat.subject || 'General Subject'} • ${mat.type || 'Notes'} • ${timeAgo}</span>
+                        </div>
+                    </a>
+                `;
+                resultsGrid.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        };
+
+        const applyFilters = () => {
+            const qLower = currentSearchTerm.toLowerCase();
+            
+            const categoryFilter = document.getElementById('filter-category')?.value || '';
+            const courseFilter = document.getElementById('filter-course')?.value || '';
+            const univFilter = document.getElementById('filter-univ')?.value || '';
+            const yearFilter = document.getElementById('filter-year')?.value || '';
+
+            let filtered = allMaterials.filter(mat => {
+                const matchQuery = !qLower || 
+                    (mat.title && mat.title.toLowerCase().includes(qLower)) || 
+                    (mat.subject && mat.subject.toLowerCase().includes(qLower));
+                
+                const matchCategory = !categoryFilter || (mat.type && mat.type.includes(categoryFilter));
+                
+                const matchCourse = !courseFilter || (mat.course && mat.course === courseFilter);
+                const matchUniv = !univFilter || (mat.university && mat.university.includes(univFilter)) || (mat.college && mat.college.includes(univFilter));
+                const matchYear = !yearFilter || (mat.year && String(mat.year) === String(yearFilter));
+                
+                return matchQuery && matchCategory && matchCourse && matchUniv && matchYear;
+            });
+
+            renderCards(filtered);
+            renderActiveFilters();
+        };
+
+        const renderActiveFilters = () => {
+            activeFiltersContainer.innerHTML = '';
+            ['filter-category', 'filter-course', 'filter-univ', 'filter-year'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el && el.value) {
+                    const pillHTML = `
+                        <div class="active-filter-pill">
+                            ${el.options[el.selectedIndex].text}
+                            <button type="button" data-target="${id}"><i class="fas fa-times"></i></button>
+                        </div>
+                    `;
+                    activeFiltersContainer.insertAdjacentHTML('beforeend', pillHTML);
+                }
+            });
+
+            // Add listeners to cross icons to clear filter and re-run
+            activeFiltersContainer.querySelectorAll('button').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const targetId = e.currentTarget.getAttribute('data-target');
+                    const el = document.getElementById(targetId);
+                    if (el) el.value = '';
+                    applyFilters();
+                });
+            });
+        };
+
+        const performSearch = async () => {
+            renderSkeletons();
+
+            // Wait for Firebase to initialize
+            if (!window.searchMaterialsFirestore) {
+                setTimeout(performSearch, 500);
+                return;
+            }
+
+            try {
+
+                const fbMaterials = await window.searchMaterialsFirestore();
+                // Combine Real Database results with Dummy Database results to ensure a rich UI test
+                allMaterials = [...dummyData, ...fbMaterials];
+                applyFilters();
+            } catch (error) {
+                console.error("Search failed:", error);
+                resultsGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #ef4444;">Search failed. Please try again.</div>';
+            }
+        };
+        
+        // Init
+        performSearch();
+        
+        // Top Search Bar Listeners
+        topSearchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            currentSearchTerm = topSearchInput.value.trim();
+            applyFilters();
+        });
+
+        // Advanced Filters Toggle
+        if (advancedToggle) {
+            advancedToggle.addEventListener('click', () => {
+                const isVisible = advancedPanel.style.display === 'flex';
+                advancedPanel.style.display = isVisible ? 'none' : 'flex';
+                advancedToggle.style.backgroundColor = isVisible ? 'transparent' : 'var(--hover-bg)';
+            });
+        }
+        
+        // Advanced Filters change listeners
+        ['filter-category', 'filter-course', 'filter-univ', 'filter-year'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('change', applyFilters);
+        });
+    }
+
+    // Setup Dummy Mock Data for Related Notes on Viewer page
+    if (page === 'viewer.html') {
+        const relatedGrid = document.getElementById('related-notes-grid');
+        if (relatedGrid) {
+            const loadRelatedNotes = async () => {
+                relatedGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-light);"><i class="fas fa-spinner fa-spin"></i> Loading related notes...</div>';
+                
+                if (!window.getRecentMaterials) {
+                    setTimeout(loadRelatedNotes, 500);
+                    return;
+                }
+                
+                try {
+                    const materials = await window.getRecentMaterials(8);
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const currentFileUrl = urlParams.get('file');
+
+                    const filtered = materials.filter(mat => mat.fileUrl !== currentFileUrl).slice(0, 4);
+
+                    if (filtered.length === 0) {
+                        relatedGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-light);">No related notes found.</div>';
+                        return;
+                    }
+
+                    relatedGrid.innerHTML = '';
+                    filtered.forEach((mat) => {
+                        const diffDays = Math.floor(Math.abs(new Date() - new Date(mat.createdAt)) / (1000 * 60 * 60 * 24));
+                        const timeAgo = diffDays === 0 ? 'Today' : diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
+
+                        let iconColor = (mat.type && mat.type.includes('PYQ')) ? 'color: var(--purple-accent);' : '';
+                        const cardHTML = `
+                            <a href="viewer.html?file=${encodeURIComponent(mat.fileUrl)}&title=${encodeURIComponent(mat.title || 'Study Material')}" class="document-card">
+                                <div class="doc-preview-container"><i class="fas fa-file-pdf doc-preview-icon" style="${iconColor}"></i></div>
+                                <div class="doc-info">
+                                    <h3 class="doc-title">${mat.title}</h3>
+                                    <span class="doc-subtitle">${mat.subject || 'General Subject'} • ${timeAgo}</span>
+                                </div>
+                            </a>
+                        `;
+                        relatedGrid.insertAdjacentHTML('beforeend', cardHTML);
+                    });
+                } catch (error) {
+                    console.error("Failed to load related notes:", error);
+                    relatedGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #ef4444;">Failed to load related notes.</div>';
+                }
+            };
+            loadRelatedNotes();
+        }
+    }
+
+    // --- Fetch and Render Recent Materials (index.html) ---
+    const loadRecentMaterials = async () => {
+        const notesGrid = document.getElementById('uploaded-notes-grid');
+        const pyqsGrid = document.getElementById('uploaded-pyqs-grid');
+        
+        if (!notesGrid && !pyqsGrid) return; // Only execute if grids exist on current page
+
+        const renderGridSkeletons = (grid) => {
+            if (grid && grid.children.length === 0) {
+                let skeletons = '';
+                for (let i = 0; i < 4; i++) {
+                    skeletons += `
+                        <div class="document-card" style="min-height: 250px; cursor: default;">
+                            <div class="doc-preview-container skeleton-img" style="height: 180px; box-shadow: none;"></div>
+                            <div class="doc-info" style="padding-top: 20px;">
+                                <div class="skeleton-text medium" style="margin: 0 0 10px 0;"></div>
+                                <div class="skeleton-text short" style="margin: 0;"></div>
+                            </div>
+                        </div>
+                    `;
+                }
+                grid.innerHTML = skeletons;
+            }
+        };
+
+        renderGridSkeletons(notesGrid);
+        renderGridSkeletons(pyqsGrid);
+
+        // If Firebase hasn't loaded yet, retry in 500ms
+        if (!window.getRecentMaterials) {
+            setTimeout(loadRecentMaterials, 500);
+            return;
+        }
+
+        try {
+            // Fetch up to 20 materials to ensure we have enough to split between the two sections
+            const materials = await window.getRecentMaterials(20);
+            
+            // Split by type (Max 8 in each grid)
+            const notes = materials.filter(mat => !mat.type || !mat.type.includes('PYQ')).slice(0, 8);
+            const pyqs = materials.filter(mat => mat.type && mat.type.includes('PYQ')).slice(0, 8);
+
+            if (notesGrid) {
+                if (notes.length === 0) {
+                    notesGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-light); font-weight: 500;">No notes uploaded yet. Be the first to share!</p>';
+                } else {
+                    notesGrid.innerHTML = ''; // Clear placeholders
+                    notes.forEach(mat => {
+                        const diffDays = Math.floor(Math.abs(new Date() - new Date(mat.createdAt)) / (1000 * 60 * 60 * 24));
+                        const timeAgo = diffDays === 0 ? 'Today' : diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
+
+                        let iconColor = '';
+                        if (mat.type && mat.type.includes('Exam')) iconColor = 'color: var(--blue-accent);';
+
+                        const cardHTML = `
+                            <a href="viewer.html?file=${encodeURIComponent(mat.fileUrl)}&title=${encodeURIComponent(mat.title || 'Study Material')}" target="_blank" class="document-card">
+                                <div class="doc-preview-container">
+                                    <i class="fas fa-file-pdf doc-preview-icon" style="${iconColor}"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3 class="doc-title">${mat.title}</h3>
+                                    <span class="doc-subtitle">${mat.subject} • ${timeAgo}</span>
+                                </div>
+                            </a>
+                        `;
+                        notesGrid.insertAdjacentHTML('beforeend', cardHTML);
+                    });
+                }
+            }
+
+            if (pyqsGrid) {
+                if (pyqs.length === 0) {
+                    pyqsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-light); font-weight: 500;">No PYQs uploaded yet. Be the first to share!</p>';
+                } else {
+                    pyqsGrid.innerHTML = ''; // Clear placeholders
+                    pyqs.forEach(mat => {
+                        const diffDays = Math.floor(Math.abs(new Date() - new Date(mat.createdAt)) / (1000 * 60 * 60 * 24));
+                        const timeAgo = diffDays === 0 ? 'Today' : diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
+
+                        let iconColor = 'color: var(--purple-accent);';
+
+                        const cardHTML = `
+                            <a href="viewer.html?file=${encodeURIComponent(mat.fileUrl)}&title=${encodeURIComponent(mat.title || 'Study Material')}" target="_blank" class="document-card">
+                                <div class="doc-preview-container">
+                                    <i class="fas fa-file-pdf doc-preview-icon" style="${iconColor}"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3 class="doc-title">${mat.title}</h3>
+                                    <span class="doc-subtitle">${mat.subject} • ${timeAgo}</span>
+                                </div>
+                            </a>
+                        `;
+                        pyqsGrid.insertAdjacentHTML('beforeend', cardHTML);
+                    });
+                }
+            }
+        } catch (error) {
+            console.error("Failed to load materials:", error);
+        }
+    };
+
+    loadRecentMaterials();
+
+    uploadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+        submitBtn.disabled = true;
+
+        const file = fileInput.files[0];
+        
+        if (!file) {
+            window.showToast('Please select a PDF file to upload.', 'warning');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            return;
+        }
+        
+        // Check for duplicate uploads before sending to Firebase Storage
+        if (window.checkDuplicateMaterial) {
+            const isDuplicate = await window.checkDuplicateMaterial(file.name);
+            if (isDuplicate) {
+                window.showToast('A material with this file name has already been uploaded. Please rename the file or upload a different one.', 'warning');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+        }
+
+        try {
+            if (window.uploadFileToFirebase) {
+                // Create a clean filename and standard upload path
+                const safeName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '_');
+                const path = `uploads/study-materials/${Date.now()}_${safeName}`;
+                
+                const downloadURL = await window.uploadFileToFirebase(file, path);
+                console.log("File uploaded to Firebase. URL:", downloadURL);
+
+                // Save Metadata to Firestore
+                if (window.saveMaterialToFirestore) {
+                    // Fetch user profile to attach their current course and college to document seamlessly
+                    const uid = localStorage.getItem('userUid');
+                    let userCourse = '', userCollege = '', userBranch = '';
+                    if (uid && window.getUserProfile) {
+                        const profile = await window.getUserProfile(uid);
+                        if (profile) {
+                            userCourse = profile.course || '';
+                            userCollege = profile.college || '';
+                            userBranch = profile.branch || '';
+                        }
+                    }
+
+                    await window.saveMaterialToFirestore({
+                        title: document.getElementById('upload-title').value,
+                        subject: document.getElementById('upload-subject').value,
+                        type: document.getElementById('upload-type').value,
+                        description: document.getElementById('upload-desc').value,
+                        fileName: file.name,
+                        fileUrl: downloadURL,
+                        uploaderUid: uid,
+                        course: userCourse,
+                        college: userCollege,
+                        branch: userBranch
+                    });
+                    
+                    // Refresh grid if user is on index.html
+                    loadRecentMaterials();
+                }
+            } else {
+                // Fallback mock upload if Firebase module hasn't loaded yet
+                await new Promise(resolve => setTimeout(resolve, 1500));
+            }
+            window.showToast('Material uploaded successfully! It will be available after review.', 'success');
+            closeUploadModal();
+        } catch (error) {
+            console.error("Upload error:", error);
+            window.showToast('Failed to upload material. Please try again later.', 'error');
+        } finally {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
 });
