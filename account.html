@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Study Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="canva-mode">
+
+    <!-- Mobile Top Bar -->
+    <div class="mobile-top-bar">
+        <button class="menu-btn" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+            <span>Study Book</span>
+        </div>
+        <button class="theme-toggle-nav" id="theme-toggle-mobile" style="display: flex;">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="menu-btn" id="sidebar-toggle-btn">
+                <i class="fas fa-book-open sidebar-toggle-icon-default"></i>
+                <i class="fas fa-bars sidebar-toggle-icon-hover"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="account.html" class="sidebar-link profile-link active"><i class="fas fa-user-circle"></i> <span>Profile</span></a>
+            <div class="menu-divider expanded-only"></div>
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="sidebar-link"><i class="fas fa-plus"></i> <span>Upload Notes</span></a>
+            <div class="menu-divider expanded-only"></div>
+            <a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="notes.html" class="sidebar-link"><i class="fas fa-file-alt"></i> <span>Notes</span></a>
+            <a href="pyqs.html" class="sidebar-link"><i class="fas fa-file-circle-question"></i> <span>PYQs</span></a>
+            <a href="syllabus.html" class="sidebar-link expanded-only"><i class="fas fa-book-open"></i> <span>Syllabus</span></a>
+            <a href="calculator.html" class="sidebar-link expanded-only"><i class="fas fa-calculator"></i> <span>Calculator</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" id="theme-toggle">
+                <i class="fas fa-sun"></i> <span>Switch Theme</span>
+            </button>
+        </div>
+    </aside>
+
+    <header class="navbar container">
+        <div class="nav-left">
+            <button class="menu-btn" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="theme-toggle-nav" id="theme-toggle-nav">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+        <nav class="nav-links desktop-only">
+            <a href="index.html">Home</a>
+            <a href="notes.html">Notes</a>
+            <a href="pyqs.html">PYQs</a>
+            <a href="syllabus.html">Syllabus</a>
+        </nav>
+        <a href="account.html" class="btn btn-purple nav-btn desktop-only">Profile</a>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+        <div class="account-header-bar">
+            <div class="internal-hero" style="padding: 0; margin: 0; text-align: left; background: none; box-shadow: none;">
+                <h1 style="font-size: 2.5rem; margin-bottom: 5px;">My Account</h1>
+                <p style="font-size: 1.1rem; margin: 0;">Manage your profile and study materials.</p>
+            </div>
+            <!-- Upload Button triggers standard logic from script.js via forms.gle href intercept -->
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="btn btn-blue" id="upload-notes-btn-account" style="padding: 12px 24px; font-size: 1rem;">
+                <i class="fas fa-upload"></i> Upload Notes
+            </a>
+        </div>
+
+        <!-- Profile Card -->
+        <div class="profile-card">
+            <div class="profile-top">
+                <div class="profile-info-left">
+                    <div class="avatar-large" id="profile-avatar"><i class="fas fa-user"></i></div>
+                    <div class="profile-text">
+                        <h2 id="profile-display-name">Loading...</h2>
+                        <p id="profile-display-email">loading@email.com</p>
+                    </div>
+                </div>
+                
+                <!-- Toggle Edit Button -->
+                <button type="button" id="edit-profile-btn" class="btn btn-outline" style="border-radius: 8px;">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </button>
+            </div>
+
+            <!-- Added .read-only class initially to lock the inputs visually -->
+            <form id="account-form" class="profile-form read-only">
+                <div class="profile-grid">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="acc-name" class="form-input edit-field" placeholder="Your Full Name" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" id="acc-email" class="form-input" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">College / University Name</label>
+                        <input type="text" id="acc-college" list="college-options" class="form-input edit-field" placeholder="e.g. AKTU, Galgotias University" required disabled>
+                        <datalist id="college-options">
+                            <option value="GLA University"></option>
+                            <option value="Gl Bajaj Group Of Institutions"></option>                            
+                            <option value="Sanskriti University"></option>
+                            <option value="BSA College Of Engineering & Technology"></option>
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Course</label>
+                        <input type="text" id="acc-course" list="course-options" class="form-input edit-field" placeholder="e.g. B.Tech, BCA" required disabled>
+                        <datalist id="course-options">
+                            <option value="B.Tech"></option>
+                            <option value="BCA"></option>
+                            <option value="B.Sc"></option>
+                            <option value="MBA"></option>
+                            <option value="MCA"></option>
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Branch</label>
+                        <input type="text" id="acc-branch" list="branch-options" class="form-input edit-field" placeholder="e.g. Computer Science (CSE)" required disabled>
+                        <datalist id="branch-options">
+                            <option value="Computer Science Engineering (CSE)"></option>
+                            <option value="Artificial Intelligence & Data Science (AI&DS)"></option>
+                            <option value="Information Technology (IT)"></option>
+                            <option value="Electronics and Communication (ECE)"></option>
+                            <option value="Mechanical Engineering (ME)"></option>
+                            <option value="Civil Engineering (CE)"></option>
+                        </datalist>
+                    </div>
+                </div>
+                
+                <!-- Save / Cancel Actions (Hidden by Default) -->
+                <div class="profile-actions" id="profile-actions-div" style="display: none;">
+                    <button type="button" id="cancel-edit-btn" class="btn btn-outline" style="border-radius: 8px;">Cancel</button>
+                    <button type="submit" id="save-btn" class="btn btn-blue" style="border-radius: 8px;">Save Changes</button>
+                </div>
+
+                <!-- Logout Action (Visible by Default) -->
+                <div class="profile-actions" id="logout-action-div" style="border-top: none; padding-top: 0; margin-top: 15px;">
+                    <button type="button" id="logout-btn" class="btn btn-danger" style="border-radius: 8px;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- My Uploads & Saved PDFs Tabs -->
+        <div class="tabs-container account-tabs">
+            <button class="tab-btn active" data-tab="acc-my-uploads">My Uploads</button>
+            <button class="tab-btn" data-tab="acc-saved-pdfs">Saved PDFs</button>
+        </div>
+
+        <!-- Tab Content: My Uploads -->
+        <div class="tab-content active" id="acc-my-uploads">
+            <div class="uploads-grid" id="my-uploads-grid">
+                <!-- Dynamic uploads will appear here -->
+            </div>
+        </div>
+
+        <!-- Tab Content: Saved PDFs -->
+        <div class="tab-content" id="acc-saved-pdfs">
+            <!-- Dynamic saved PDFs will appear here -->
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script type="module">
+        import "./auth.js"; // Initialize Firebase Module
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Account Tab Logic (Separate from Main Tabs)
+            const accTabBtns = document.querySelectorAll('.account-tabs .tab-btn');
+            const accTabContents = document.querySelectorAll('#acc-my-uploads, #acc-saved-pdfs');
+            accTabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    accTabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    accTabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(btn.getAttribute('data-tab')).classList.add('active');
+                });
+            });
+
+            // Edit Profile Toggle Logic
+            const editBtn = document.getElementById('edit-profile-btn');
+            const cancelEditBtn = document.getElementById('cancel-edit-btn');
+            const profileForm = document.getElementById('account-form');
+            const editFields = document.querySelectorAll('.edit-field');
+            const actionsDiv = document.getElementById('profile-actions-div');
+            const logoutDiv = document.getElementById('logout-action-div');
+
+            const toggleEditMode = (isEditing) => {
+                if (isEditing) {
+                    profileForm.classList.remove('read-only');
+                    editFields.forEach(field => field.disabled = false);
+                    actionsDiv.style.display = 'flex';
+                    logoutDiv.style.display = 'none';
+                    editBtn.style.display = 'none';
+                } else {
+                    profileForm.classList.add('read-only');
+                    editFields.forEach(field => field.disabled = true);
+                    actionsDiv.style.display = 'none';
+                    logoutDiv.style.display = 'flex';
+                    editBtn.style.display = 'flex';
+                }
+            };
+            
+            editBtn.addEventListener('click', () => toggleEditMode(true));
+            cancelEditBtn.addEventListener('click', () => toggleEditMode(false));
+
+            // Helper to handle dynamic datalist options
+            const loadCustomOptions = () => {
+                ['college', 'course', 'branch'].forEach(type => {
+                    const customItems = JSON.parse(localStorage.getItem(`custom_${type}s`) || '[]');
+                    const datalist = document.getElementById(`${type}-options`);
+                    customItems.forEach(item => {
+                        if (!Array.from(datalist.options).some(opt => opt.value === item)) {
+                            const option = document.createElement('option');
+                            option.value = item;
+                            datalist.appendChild(option);
+                        }
+                    });
+                });
+            };
+            
+            const saveCustomOption = (type, value) => {
+                if (!value) return;
+                const customItems = JSON.parse(localStorage.getItem(`custom_${type}s`) || '[]');
+                const datalist = document.getElementById(`${type}-options`);
+                
+                if (!Array.from(datalist.options).some(opt => opt.value === value) && !customItems.includes(value)) {
+                    customItems.push(value);
+                    localStorage.setItem(`custom_${type}s`, JSON.stringify(customItems));
+                    const option = document.createElement('option');
+                    option.value = value;
+                    datalist.appendChild(option);
+                }
+            };
+
+            loadCustomOptions();
+
+            // Short delay to ensure Firebase initializes completely
+            setTimeout(async () => {
+                const uid = localStorage.getItem('userUid');
+                if (!uid) return window.location.href = 'login.html'; // Redirect to login if not logged in
+
+                // Load Profile
+                if (window.getUserProfile) {
+                    const profile = await window.getUserProfile(uid);
+                    const currentUser = window.getCurrentUser ? window.getCurrentUser() : null;
+                    
+                    // Fallback to Auth User if Firestore Profile is completely missing
+                    const displayName = (profile && profile.name) || (currentUser && currentUser.displayName) || localStorage.getItem('userName') || 'User';
+                    const displayEmail = (profile && profile.email) || (currentUser && currentUser.email) || '';
+
+                    // Display UI
+                    document.getElementById('profile-display-name').innerText = displayName;
+                    document.getElementById('profile-display-email').innerText = displayEmail;
+                    document.getElementById('profile-avatar').innerText = displayName.charAt(0).toUpperCase();
+
+                    // Form fields
+                    document.getElementById('acc-name').value = displayName;
+                    document.getElementById('acc-email').value = displayEmail;
+                    document.getElementById('acc-college').value = profile ? (profile.college || '') : '';
+                    document.getElementById('acc-course').value = profile ? (profile.course || '') : '';
+                    document.getElementById('acc-branch').value = profile ? (profile.branch || '') : '';
+                }
+
+                // Fetch and Load User Uploads
+                if (window.getUserMaterials) {
+                    const materialsGrid = document.getElementById('my-uploads-grid');
+                    materialsGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-light);"><i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 10px;"></i><br>Loading your uploads...</div>';
+                    
+                    const materials = await window.getUserMaterials(uid);
+                    
+                    if (materials.length === 0) {
+                        materialsGrid.innerHTML = `
+                            <div class="empty-state" style="grid-column: 1/-1;">
+                                <i class="fas fa-folder-open" style="font-size: 3rem; color: #94a3b8; margin-bottom: 15px;"></i>
+                                <h3 style="font-size: 1.2rem; color: var(--text-dark); margin-bottom: 8px;">No Uploads Yet</h3>
+                                <p style="font-size: 0.95rem; margin-bottom: 20px;">You haven't shared any study materials yet.</p>
+                                <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="btn btn-blue" style="border-radius: 8px;">Upload Notes</a>
+                            </div>
+                        `;
+                    } else {
+                        materialsGrid.innerHTML = '';
+                        materials.forEach(mat => {
+                            const date = new Date(mat.createdAt).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' });
+                            
+                            let iconHTML = '<div class="upload-icon"><i class="fas fa-file-pdf"></i></div>';
+                            if (mat.type && mat.type.includes('PYQ')) {
+                                iconHTML = '<div class="upload-icon" style="color: var(--purple-accent); background: var(--icon-bg-purple);"><i class="fas fa-file-circle-question"></i></div>';
+                            }
+
+                            const card = document.createElement('div');
+                            card.className = 'upload-card';
+                            card.innerHTML = `
+                                <div class="upload-card-header">
+                                    ${iconHTML}
+                                    <div>
+                                        <h3 class="upload-title">${mat.title}</h3>
+                                        <div class="upload-meta">
+                                            <span class="tag">${mat.type || 'Notes'}</span>
+                                            <span>• ${date}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="upload-desc">${mat.description || 'No description provided.'}</p>
+                                <div class="upload-actions">
+                                    <a href="viewer.html?file=${encodeURIComponent(mat.fileUrl)}&title=${encodeURIComponent(mat.title || 'Study Material')}&doc=${encodeURIComponent(mat.id)}" target="_blank" class="btn btn-outline full-width" style="padding: 8px; font-size: 0.9rem; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="fas fa-eye"></i> View</a>
+                                    <button class="btn btn-danger delete-mat-btn" data-id="${mat.id}" style="padding: 8px 12px; font-size: 0.9rem; border-radius: 6px;" title="Delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            `;
+                            materialsGrid.appendChild(card);
+                        });
+
+                        // Attach delete listeners
+                        document.querySelectorAll('.delete-mat-btn').forEach(btn => {
+                            btn.addEventListener('click', async (e) => {
+                                const docId = e.currentTarget.getAttribute('data-id');
+                                if (await window.showConfirm('Delete Material', 'Are you sure you want to delete this material? This action cannot be undone.', true)) {
+                                    e.currentTarget.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                                    e.currentTarget.disabled = true;
+                                    if (window.deleteMaterialFromFirestore) {
+                                        await window.deleteMaterialFromFirestore(docId);
+                                        e.currentTarget.closest('.upload-card').remove();
+                                        if (materialsGrid.children.length === 0) {
+                                             materialsGrid.innerHTML = `
+                                                <div class="empty-state" style="grid-column: 1/-1;">
+                                                    <i class="fas fa-folder-open" style="font-size: 3rem; color: #94a3b8; margin-bottom: 15px;"></i>
+                                                    <h3 style="font-size: 1.2rem; color: var(--text-dark); margin-bottom: 8px;">No Uploads Left</h3>
+                                                    <p style="font-size: 0.95rem; margin-bottom: 20px;">You have deleted all your materials.</p>
+                                                    <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="btn btn-blue" style="border-radius: 8px;">Upload Notes</a>
+                                                </div>
+                                            `;
+                                        }
+                                    }
+                                }
+                            });
+                        });
+                    }
+                }
+
+                // Fetch and Load Saved PDFs
+                {
+                    const savedGrid = document.getElementById('acc-saved-pdfs');
+                    savedGrid.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-light);"><i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 10px;"></i><br>Loading saved PDFs...</div>';
+                    const localSavedMap = JSON.parse(localStorage.getItem(`saved_pdfs_${uid}`) || '{}');
+                    const localSavedMaterials = Object.values(localSavedMap);
+                    let remoteSavedMaterials = [];
+                    if (window.getSavedMaterials) {
+                        try {
+                            remoteSavedMaterials = await window.getSavedMaterials(uid);
+                        } catch (error) {
+                            console.error('Failed to fetch remote saved PDFs:', error);
+                        }
+                    }
+                    const mergedMap = {};
+                    localSavedMaterials.forEach(mat => { if (mat && mat.id) mergedMap[mat.id] = mat; });
+                    remoteSavedMaterials.forEach(mat => { if (mat && mat.id) mergedMap[mat.id] = { ...mergedMap[mat.id], ...mat }; });
+                    const savedMaterials = Object.values(mergedMap).sort((a, b) => new Date((b.savedAt || b.createdAt || 0)) - new Date((a.savedAt || a.createdAt || 0)));
+                    
+                    if (savedMaterials.length === 0) {
+                        savedGrid.innerHTML = `
+                            <div class="empty-state">
+                                <i class="fas fa-bookmark" style="font-size: 3rem; color: var(--blue-accent); margin-bottom: 15px;"></i>
+                                <h3 style="font-size: 1.2rem; color: var(--text-dark); margin-bottom: 8px;">No Saved PDFs Yet</h3>
+                                <p style="font-size: 0.95rem; margin-bottom: 20px;">PDFs you save from cards or the viewer will appear here.</p>
+                                <a href="search.html?q=Notes" class="btn btn-outline" style="border-radius: 8px;">Explore Notes</a>
+                            </div>
+                        `;
+                    } else {
+                        savedGrid.innerHTML = '<div class="uploads-grid" id="saved-pdfs-grid"></div>';
+                        const gridContainer = document.getElementById('saved-pdfs-grid');
+                        
+                        savedMaterials.forEach(mat => {
+                            const date = new Date(mat.createdAt).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' });
+                            
+                            let iconHTML = '<div class="upload-icon"><i class="fas fa-file-pdf"></i></div>';
+                            if (mat.type && mat.type.includes('PYQ')) {
+                                iconHTML = '<div class="upload-icon" style="color: var(--purple-accent); background: var(--icon-bg-purple);"><i class="fas fa-file-circle-question"></i></div>';
+                            }
+
+                            const card = document.createElement('div');
+                            card.className = 'upload-card';
+                            card.innerHTML = `
+                                <div class="upload-card-header">
+                                    ${iconHTML}
+                                    <div>
+                                        <h3 class="upload-title">${mat.title}</h3>
+                                        <div class="upload-meta">
+                                            <span class="tag">${mat.type || 'Notes'}</span>
+                                            <span>• ${date}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="upload-desc">${mat.description || 'No description provided.'}</p>
+                                <div class="upload-actions">
+                                    <a href="viewer.html?file=${encodeURIComponent(mat.fileUrl)}&title=${encodeURIComponent(mat.title || 'Study Material')}&doc=${encodeURIComponent(mat.id)}" target="_blank" class="btn btn-outline full-width" style="padding: 8px; font-size: 0.9rem; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="fas fa-eye"></i> View</a>
+                                </div>
+                            `;
+                            gridContainer.appendChild(card);
+                        });
+                    }
+                }
+
+                // Handle Form Submit
+                document.getElementById('account-form').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const btn = document.getElementById('save-btn');
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+                    
+                    const data = {
+                        name: document.getElementById('acc-name').value,
+                        email: document.getElementById('acc-email').value,
+                        college: document.getElementById('acc-college').value,
+                        course: document.getElementById('acc-course').value,
+                        branch: document.getElementById('acc-branch').value,
+                    };
+
+                    if (window.saveUserProfile) {
+                        try {
+                            await window.saveUserProfile(uid, data);
+                            localStorage.setItem('userName', data.name);
+                            window.showToast('Profile updated successfully!', 'success');
+                            
+                            // Instant UI Update without refreshing
+                            document.getElementById('profile-display-name').innerText = data.name;
+                            document.getElementById('profile-avatar').innerText = data.name.charAt(0).toUpperCase();
+                            if (window.updateProfileUI) window.updateProfileUI(); // Updates sidebar/nav
+                            
+                            // Save new options to datalists if user typed them manually
+                            saveCustomOption('college', data.college);
+                            saveCustomOption('course', data.course);
+                            saveCustomOption('branch', data.branch);
+                            
+                            toggleEditMode(false); // Lock fields again
+                        } catch (error) {
+                            console.error(error);
+                            window.showToast('Failed to save changes. ' + error.message, 'error');
+                        }
+                    }
+                    btn.innerHTML = 'Save Changes';
+                });
+
+                // Handle Logout
+                document.getElementById('logout-btn').addEventListener('click', async () => {
+                    if (await window.showConfirm('Log Out', 'Are you sure you want to log out of your account?')) {
+                        if (window.logoutUser) window.logoutUser();
+                    }
+                });
+            }, 500); // 500ms delay wait for Auth State
+        });
+    </script>
+</body>
+</html>

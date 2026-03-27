@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read and download study materials on Study Book.">
+    <link rel="icon" type="image/png" href="logo.png?v=2">
+    <title>Data Structures and Algorithms Complete Notes - Study Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- PDF.js Integration -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body class="viewer-page">
+
+    <!-- Sticky Top Bar -->
+    <header class="viewer-top-bar">
+        <div class="v-top-left">
+            <a href="javascript:history.back()" class="v-back-btn" title="Go Back"><i class="fas fa-arrow-left"></i></a>
+            <div class="v-doc-info">
+                <h1 class="v-doc-title" title="Data Structures and Algorithms Complete Notes">Data Structures and Algorithms Complete Notes</h1>
+                <span class="v-doc-meta">Study Material</span>
+            </div>
+        </div>
+        
+        <div class="v-top-right">
+            <button class="v-action-btn theme-toggle-nav" id="theme-toggle-viewer" style="display: flex;" title="Toggle Theme"><i class="fas fa-sun"></i></button>
+            <button class="v-action-btn" id="v-like-btn" title="Like"><i class="far fa-heart"></i> <span id="v-like-count">0</span></button>
+            <button class="v-action-btn" id="v-save-btn" title="Save PDF"><i class="far fa-bookmark"></i> <span class="desktop-only">Save</span></button>
+            <button class="v-action-btn" id="v-share-btn" title="Share"><i class="fas fa-share-alt"></i> <span class="desktop-only">Share</span></button>
+            <button class="v-action-btn v-info-trigger" id="v-info-btn" title="Document Info"><i class="fas fa-info-circle"></i></button>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="viewer-layout-wrapper">
+        <!-- Center Content -->
+        <main class="viewer-main-content">
+            
+            <!-- Viewer Container -->
+            <div class="pdf-viewer-container" id="pdf-viewer-container">
+                <div class="pdf-toolbar">
+                    <div class="pdf-toolbar-actions" style="display: flex; gap: 15px; align-items: center;">
+                        <span class="pdf-toolbar-text" id="page-num-text" style="display: none;">Loading PDF...</span>
+                    </div>
+                    <div class="pdf-toolbar-actions">
+                        <button title="Zoom Out" id="zoom-out-btn"><i class="fas fa-search-minus"></i></button>
+                        <button title="Zoom In" id="zoom-in-btn"><i class="fas fa-search-plus"></i></button>
+                        <button title="Full Screen" id="fullscreen-btn"><i class="fas fa-expand"></i></button>
+                    </div>
+                </div>
+                <div id="pdf-render-container" style="flex-grow: 1; overflow: auto; background: #e5e7eb; display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Canvases will be rendered here -->
+                </div>
+            </div>
+
+            <!-- Related Notes -->
+            <section class="viewer-bottom-section" style="border: none; background: transparent; padding: 0; box-shadow: none;">
+                <h3 class="v-section-title" style="margin-bottom: 20px;">🔥 Related Notes</h3>
+                <div class="document-grid" id="related-notes-grid">
+                    <!-- Populated via script.js -->
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Sliding Info Sidebar -->
+        <aside class="viewer-info-sidebar" id="v-info-panel">
+            <div class="v-info-header">
+                <h2>Document Details</h2>
+                <button id="v-close-info-btn"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="v-info-body">
+                <div class="v-uploader-card">
+                    <div class="user-avatar" id="v-uploader-avatar" style="width: 50px; height: 50px; font-size: 1.5rem; background: linear-gradient(135deg, var(--blue-accent), var(--purple-accent));">...</div>
+                    <div class="v-uploader-details">
+                        <h4 id="v-uploader-name">Loading...</h4>
+                        <span id="v-uploader-course-univ" style="display: block; font-size: 0.8rem; color: var(--text-light); margin-bottom: 2px;"></span>
+                        <span id="v-uploader-date">Loading...</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="v-info-item">
+                        <span class="v-item-label">Description</span>
+                        <span class="v-item-value" id="v-doc-desc" style="font-weight: 400; line-height: 1.6; margin-top: 4px; display: block;">Loading...</span>
+                    </div>
+                    <div class="v-info-item">
+                        <span class="v-item-label">University</span>
+                        <span class="v-item-value" id="v-doc-uni">Loading...</span>
+                    </div>
+                    <div class="v-info-item">
+                        <span class="v-item-label">Course</span>
+                        <span class="v-item-value" id="v-doc-course">Loading...</span>
+                    </div>
+                    <div class="v-info-item">
+                        <span class="v-item-label">Subject</span>
+                        <span class="v-item-value" id="v-doc-subject">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+    <script type="module" src="auth.js"></script>
+</body>
+</html>
