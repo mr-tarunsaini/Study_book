@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,4 +119,170 @@
     <script src="script.js"></script>
     <script type="module" src="auth.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn more about Study Book, a platform built by engineering students for engineering students to provide organized study resources and tools.">
+    <meta name="keywords" content="About Study Book, engineering study platform, student resources, B.Tech help, student community">
+    <meta name="author" content="Study Book">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png?v=2">
+    <title>About Us - Study Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J41ZWRBPCZ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-J41ZWRBPCZ');
+    </script>
+</head>
+<body class="canva-mode">
+    <!-- Mobile Top Bar -->
+    <div class="mobile-top-bar">
+        <button class="menu-btn" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+            <span>Study Book</span>
+        </div>
+        <button class="theme-toggle-nav" id="theme-toggle-mobile" style="display: flex;">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="menu-btn" id="sidebar-toggle-btn">
+                <i class="fas fa-book-open sidebar-toggle-icon-default"></i>
+                <i class="fas fa-bars sidebar-toggle-icon-hover"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="login.html" class="sidebar-link profile-link"><i class="fas fa-user-circle"></i> <span>Profile</span></a>
+            <div class="menu-divider expanded-only"></div>
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="sidebar-link"><i class="fas fa-plus"></i> <span>Upload Notes</span></a>
+            <div class="menu-divider expanded-only"></div>
+
+            <a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="notes.html" class="sidebar-link"><i class="fas fa-file-alt"></i> <span>Notes</span></a>
+            <a href="pyqs.html" class="sidebar-link"><i class="fas fa-file-circle-question"></i> <span>PYQs</span></a>
+            <a href="syllabus.html" class="sidebar-link expanded-only"><i class="fas fa-book-open"></i> <span>Syllabus</span></a>
+            <a href="index.html#tools" class="sidebar-link"><i class="fas fa-tools"></i> <span>Tools</span></a>
+            
+            <a href="about.html" class="sidebar-link active">
+                <i class="fas fa-info-circle"></i> <span>About Us</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn " id="theme-toggle">
+                <i class="fas fa-sun"></i> <span>Switch Theme</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="internal-hero">
+            <h1>About Study Book</h1>
+            <p>Empowering students with organized resources for academic success.</p>
+        </div>
+
+        <section class="content-section">
+            <div class="card" style="padding: 40px; margin-bottom: 40px;">
+                <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--text-dark);">About Us</h2>
+                <p style="color: var(--text-light); line-height: 1.8; font-size: 1.1rem; margin-bottom: 20px;">
+                    Study Book is a learning platform built especially for B.Tech students, with a strong focus on Computer Science and related branches.
+                </p>
+                <p style="color: var(--text-light); line-height: 1.8; font-size: 1.1rem;">
+                    As engineering students ourselves, we know the real problems — scattered notes, unclear syllabus structure, outdated resources, and the constant pressure of exams, internals, and placements. Study Book was created to solve these problems by providing well-organized, reliable, and easy-to-access study material in one place.
+                </p>
+            </div>
+
+            <div class="card" style="padding: 40px; margin-bottom: 40px;">
+                <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--text-dark);">What We Provide</h2>
+                <ul style="color: var(--text-light); line-height: 1.8; font-size: 1.1rem; list-style-position: inside; margin-bottom: 20px;">
+                    <li>Semester-wise and subject-wise B.Tech notes</li>
+                    <li>Previous Year Questions (PYQs) to understand exam patterns and important topics</li>
+                    <li>Clear syllabus breakdowns for better planning and coverage</li>
+                    <li>Helpful study tools to improve focus, consistency, and productivity</li>
+                </ul>
+                <p style="color: var(--text-light); line-height: 1.8; font-size: 1.1rem;">
+                    All content is structured to match university-level curriculum, making it easier for students to study efficiently and revise faster.
+                </p>
+            </div>
+
+            <div class="card" style="padding: 40px; margin-bottom: 40px;">
+                <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--text-dark);">Built for CSE Students</h2>
+                <p style="color: var(--text-light); line-height: 1.8; font-size: 1.1rem; margin-bottom: 15px;">
+                    Study Book is especially designed for Computer Science students, covering core subjects such as:
+                </p>
+                <ul style="color: var(--text-light); line-height: 1.8; font-size: 1.1rem; list-style-position: inside; margin-bottom: 20px;">
+                    <li>Data Structures & Algorithms</li>
+                    <li>Operating Systems</li>
+                    <li>Database Management Systems</li>
+                    <li>Computer Networks</li>
+                    <li>Object-Oriented Programming</li>
+                    <li>Core programming subjects</li>
+                </ul>
+                <p style="color: var(--text-light); line-height: 1.8; font-size: 1.1rem;">
+                    Our goal is to help students build strong fundamentals, not just pass exams.
+                </p>
+            </div>
+
+            <div class="card" style="padding: 40px; margin-bottom: 40px;">
+                <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--text-dark);">Our Vision</h2>
+                <p style="color: var(--text-light); line-height: 1.8; font-size: 1.1rem; margin-bottom: 20px;">
+                    We aim to make Study Book a trusted academic companion for B.Tech students — from understanding core subjects to preparing confidently for exams and beyond.
+                </p>
+                <p style="color: var(--text-light); line-height: 1.8; font-size: 1.1rem;">
+                    We are continuously working to improve the platform by adding better resources, smarter tools, and a smoother learning experience, based on real student needs.
+                </p>
+            </div>
+
+            <!-- Share Notes Section -->
+        <section class="content-section centered">
+            <h2 class="section-title">Share Your Notes</h2>
+            <p class="section-description">Help your juniors and peers by sharing your notes and study materials.</p>
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="btn btn-purple">
+                <i class="fas fa-upload"></i> Upload Notes
+            </a>
+        </section>
+        <div style="margin-top: 50px; text-align: center;">
+            <h3 style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(to right, var(--blue-accent), var(--purple-accent)); -webkit-background-clip: text; background-clip: text; color: transparent;">Study Book — Study Smarter. Score Better.</h3>
+        </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer container">
+        <div class="footer-links">
+            <a href="about.html" style="color: var(--blue-accent);">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
+            <a href="terms_conditions.html">Terms & Conditions</a>
+        </div>
+        <p class="copyright">© 2026 Study Book. Built with ❤️ for students.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+>>>>>>> 1af2d087193d90a7d6622d153ab335f57fc16331
 </html>
