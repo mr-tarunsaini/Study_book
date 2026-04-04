@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn more about Study Book - The ultimate resource for engineering students.">
+    <link rel="icon" type="image/png" href="logo.png?v=2">
+    <title>About Us - Study Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="canva-mode">
+
+    <!-- Mobile Top Bar -->
+    <div class="mobile-top-bar">
+        <button class="menu-btn" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+            <span>Study Book</span>
+        </div>
+        <button class="theme-toggle-nav" id="theme-toggle-mobile" style="display: flex;">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="menu-btn" id="sidebar-toggle-btn">
+                <i class="fas fa-book-open sidebar-toggle-icon-default"></i>
+                <i class="fas fa-bars sidebar-toggle-icon-hover"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="login.html" class="sidebar-link profile-link"><i class="fas fa-user-circle"></i> <span>Profile</span></a>
+            <div class="menu-divider expanded-only"></div>
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="sidebar-link"><i class="fas fa-plus"></i> <span>Upload Notes</span></a>
+            <div class="menu-divider expanded-only"></div>
+
+            <a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="search.html?q=Notes" class="sidebar-link"><i class="fas fa-file-alt"></i> <span>Notes</span></a>
+            <a href="search.html?q=PYQs" class="sidebar-link"><i class="fas fa-file-circle-question"></i> <span>PYQs</span></a>
+            <a href="search.html?q=Syllabus" class="sidebar-link expanded-only"><i class="fas fa-book-open"></i> <span>Syllabus</span></a>
+            <a href="calculator.html" class="sidebar-link"><i class="fas fa-calculator"></i> <span>Calculator</span></a>
+            <a href="about.html" class="sidebar-link active"><i class="fas fa-info-circle"></i> <span>About Us</span></a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" id="theme-toggle">
+                <i class="fas fa-sun"></i> <span>Switch Theme</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Navbar -->
+    <header class="navbar container">
+        <div class="nav-left">
+            <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="theme-toggle-nav" id="theme-toggle-nav"><i class="fas fa-sun"></i></button>
+        </div>
+        <nav class="nav-links desktop-only">
+            <a href="index.html">Home</a>
+            <a href="search.html?q=Notes">Notes</a>
+            <a href="search.html?q=PYQs">PYQs</a>
+            <a href="search.html?q=Syllabus">Syllabus</a>
+        </nav>
+        <a href="login.html" class="btn btn-purple nav-btn desktop-only">Login / Register</a>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 80px;">
+        <div class="internal-hero">
+            <h1>About Study Book</h1>
+            <p>Empowering engineering students with the best study resources.</p>
+        </div>
+        
+        <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+            <div class="card" style="cursor: default; text-align: left; border: 1px solid var(--border-color);">
+                <h2 style="margin-bottom: 15px; font-size: 1.5rem; color: var(--blue-accent);">Our Mission</h2>
+                <p style="color: var(--text-light); line-height: 1.8;">Study Book is a community-driven platform designed exclusively for engineering students. Our primary mission is to provide free, high-quality, and easily accessible notes, previous year questions (PYQs), and comprehensive syllabus guides to help you achieve your academic goals.</p>
+            </div>
+            
+            <div class="card" style="cursor: default; text-align: left; border: 1px solid var(--border-color);">
+                <h2 style="margin-bottom: 15px; font-size: 1.5rem; color: var(--blue-accent);">Why We Built This</h2>
+                <p style="color: var(--text-light); line-height: 1.8;">We understand the struggle of scrambling for notes right before exams. By centralizing study materials that are often scattered across various drives, chats, and websites, we aim to save students valuable time. Knowledge grows when shared, and Study Book is built on the foundation of students helping students.</p>
+            </div>
+            
+            <div class="card" style="cursor: default; text-align: left; border: 1px solid var(--border-color);">
+                <h2 style="margin-bottom: 15px; font-size: 1.5rem; color: var(--blue-accent);">Join the Community</h2>
+                <p style="color: var(--text-light); line-height: 1.8;">We encourage everyone to not just consume, but also contribute. Have great handwritten notes? Upload them and help thousands of your peers succeed.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer container">
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
+            <a href="terms_conditions.html">Terms & Conditions</a>
+        </div>
+        <p class="copyright">© 2026 Study Book. Built with ❤️ for students.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="module" src="auth.js"></script>
+</body>
+</html>

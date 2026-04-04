@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search the Study Book database for B.Tech notes, PYQs, and other study materials.">
+    <link rel="icon" type="image/png" href="logo.png?v=2">
+    <title>Search Materials - Study Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J41ZWRBPCZ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J41ZWRBPCZ');
+    </script>
+</head>
+<body class="canva-mode">
+
+    <!-- Mobile Top Bar -->
+    <div class="mobile-top-bar">
+        <button class="menu-btn" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+            <span>Study Book</span>
+        </div>
+        <button class="theme-toggle-nav" id="theme-toggle-mobile" style="display: flex;">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="menu-btn" id="sidebar-toggle-btn">
+                <i class="fas fa-book-open sidebar-toggle-icon-default"></i>
+                <i class="fas fa-bars sidebar-toggle-icon-hover"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="sidebar-menu">
+            <a href="login.html" class="sidebar-link profile-link"><i class="fas fa-user-circle"></i> <span>Profile</span></a>
+            <div class="menu-divider expanded-only"></div>
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="sidebar-link"><i class="fas fa-plus"></i> <span>Upload Notes</span></a>
+            <div class="menu-divider expanded-only"></div>
+
+            <a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="search.html?q=Notes" class="sidebar-link"><i class="fas fa-file-alt"></i> <span>Notes</span></a>
+            <a href="search.html?q=PYQs" class="sidebar-link"><i class="fas fa-file-circle-question"></i> <span>PYQs</span></a>
+            <a href="search.html?q=Syllabus" class="sidebar-link expanded-only"><i class="fas fa-book-open"></i> <span>Syllabus</span></a>
+            <a href="calculator.html" class="sidebar-link">
+                <i class="fas fa-calculator"></i> <span>Calculator</span>
+            </a>
+            <a href="about.html" class="sidebar-link"><i class="fas fa-info-circle"></i> <span>About Us</span></a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" id="theme-toggle">
+                <i class="fas fa-sun"></i> <span>Switch Theme</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Specialized Search Navbar -->
+    <header class="navbar container search-page-navbar">
+        <div class="nav-left">
+            <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="theme-toggle-nav" id="theme-toggle-nav"><i class="fas fa-sun"></i></button>
+        </div>
+        
+        <nav class="nav-links desktop-only">
+            <a href="index.html">Home</a>
+            <a href="notes.html">Notes</a>
+            <a href="pyqs.html">PYQs</a>
+            <a href="syllabus.html">Syllabus</a>
+        </nav>
+        <a href="login.html" class="btn btn-purple nav-btn desktop-only">Login / Register</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container search-main-content">
+        <!-- Search & Filter Header -->
+        <div class="search-header-section" style="margin-bottom: 20px;">
+            <form id="top-search-form" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="flex-grow: 1; position: relative; min-width: 250px;">
+                    <i class="fas fa-search" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-light);"></i>
+                    <input type="text" id="top-search-input" name="q" placeholder="Search for courses, notes, pyqs..." autocomplete="off" class="form-input" style="width: 100%; padding: 14px 16px 14px 45px; border-radius: 12px; font-size: 1.05rem;">
+                </div>
+                <button type="button" id="advanced-filter-toggle" class="btn btn-outline" style="border-radius: 12px; padding: 14px 24px; font-size: 1rem; background: var(--card-bg);"><i class="fas fa-filter"></i> Filters</button>
+            </form>
+        </div>
+
+        <!-- Advanced Filters Dropdown -->
+        <div class="advanced-filters-panel" id="advanced-filters-panel" style="display: none;">
+            <select id="filter-category" class="form-input"><option value="">All Categories</option><option value="Notes">Notes</option><option value="PYQ">Question Papers</option><option value="Books">Books</option><option value="Short Notes">Short Notes</option></select>
+            <select id="filter-course" class="form-input"><option value="">All Courses</option><option value="B.Tech">B.Tech</option><option value="BCA">BCA</option><option value="B.Sc">B.Sc</option><option value="MBA">MBA</option><option value="MCA">MCA</option></select>
+            <select id="filter-univ" class="form-input"><option value="">All Colleges</option><option value="GLA University">GLA University</option><option value="Gl Bajaj Group Of Institutions">Gl Bajaj Group Of Institutions</option><option value="Sanskriti University">Sanskriti University</option><option value="BSA College Of Engineering & Technology">BSA College Of Engineering & Technology</option><option value="AKTU">AKTU</option></select>
+            <select id="filter-year" class="form-input"><option value="">All Years</option><option value="1">1st Year</option><option value="2">2nd Year</option><option value="3">3rd Year</option><option value="4">4th Year</option></select>
+        </div>
+
+        <!-- Active Filters Container -->
+        <div id="active-filters-container" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px;">
+            <!-- Active filters will appear here -->
+        </div>
+
+        <!-- Results Meta Info -->
+        <div id="search-results-info" class="search-meta-info"></div>
+        
+        <!-- Document Grid specifically for Search Results -->
+        <div class="document-grid" id="search-results-grid">
+            <!-- Filtered materials & Skeletons will be injected here via script.js -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer container">
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
+            <a href="terms_conditions.html">Terms & Conditions</a>
+        </div>
+        <p class="copyright">© 2026 Study Book. Built with ❤️ for students.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="module" src="auth.js"></script>
+</body>
+</html>

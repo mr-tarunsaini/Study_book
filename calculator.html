@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate your SGPA, YGPA, and CGPA easily with Study Book's AKTU GPA Calculator. Accurate results based on university grading systems.">
+    <meta name="keywords" content="SGPA calculator, CGPA calculator, AKTU calculator, B.Tech GPA, engineering marks calculator, Study Book">
+    <meta name="author" content="Study Book">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png?v=2">
+    <!-- Title -->
+    <title>CGPA Calculator - Study Book</title>
+    <!-- Font Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Style Link -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J41ZWRBPCZ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-J41ZWRBPCZ');
+    </script>
+</head>
+<body class="canva-mode">
+
+    <!-- Mobile Top Bar -->
+    <div class="mobile-top-bar">
+        <button class="menu-btn" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+            <span>Study Book</span>
+        </div>
+        <button class="theme-toggle-nav" id="theme-toggle-mobile" style="display: flex;">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="menu-btn" id="sidebar-toggle-btn">
+                <i class="fas fa-book-open sidebar-toggle-icon-default"></i>
+                <i class="fas fa-bars sidebar-toggle-icon-hover"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+            <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="sidebar-menu">
+            <a href="login.html" class="sidebar-link profile-link">
+                <i class="fas fa-user-circle"></i> <span>Profile</span>
+            </a>
+            
+            <div class="menu-divider expanded-only"></div>
+
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="sidebar-link">
+                <i class="fas fa-plus"></i> <span>Upload Notes</span>
+            </a>
+
+            <div class="menu-divider expanded-only"></div>
+
+            <a href="index.html" class="sidebar-link">
+                <i class="fas fa-home"></i> <span>Home</span>
+            </a>
+            <a href="search.html?q=Notes" class="sidebar-link">
+                <i class="fas fa-file-alt"></i> <span>Notes</span>
+            </a>
+            <a href="search.html?q=PYQs" class="sidebar-link">
+                <i class="fas fa-file-circle-question"></i> <span>PYQs</span>
+            </a>
+            <a href="search.html?q=Syllabus" class="sidebar-link expanded-only">
+                <i class="fas fa-book-open"></i> <span>Syllabus</span>
+            </a>
+            <a href="calculator.html" class="sidebar-link active">
+                <i class="fas fa-calculator"></i> <span>Calculator</span>
+            </a>
+            
+            <a href="about.html" class="sidebar-link">
+                <i class="fas fa-info-circle"></i> <span>About Us</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" id="theme-toggle">
+                <i class="fas fa-sun"></i> <span>Switch Theme</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Navbar -->
+    <header class="navbar container">
+        <div class="nav-left">
+            <button class="menu-btn" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+                <span>Study Book</span>
+            </div>
+        <button class="theme-toggle-nav" id="theme-toggle-nav">
+            <i class="fas fa-sun"></i>
+        </button>
+        </div>
+
+        <!-- navbar-links -->
+        <nav class="nav-links desktop-only">
+            <a href="index.html">Home</a>
+            <a href="notes.html">Notes</a>
+            <a href="pyqs.html">PYQs</a>
+            <a href="syllabus.html">Syllabus</a>
+            <a href="index.html#tools">Tools</a>
+        </nav>
+        <a href="#calculator" class="btn btn-purple nav-btn desktop-only">Calculate GPA</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Internal Hero -->
+        <div class="internal-hero">
+            <h1>AKTU B Tech CGPA Calculator</h1>
+            <p>Calculate your SGPA, YGPA, and CGPA easily. Enter your credits and marks/grades to get accurate results based on the AKTU grading system.</p>
+        </div>
+
+        <section class="content-section" id="calculator">
+            
+            <!-- Tabs -->
+            <div class="tabs-container">
+                <button class="tab-btn active" data-tab="calc-sgpa">SGPA Calculator</button>
+                <button class="tab-btn" data-tab="calc-ygpa">YGPA Calculator</button>
+                <button class="tab-btn" data-tab="calc-cgpa">CGPA Calculator</button>
+            </div>
+
+            <!-- SGPA Calculator -->
+            <div class="tab-content active" id="calc-sgpa">
+                <div class="calc-box">
+                    <div class="calc-row" style="grid-template-columns: 1fr;">
+                        <select class="calc-input" id="semester-select">
+                            <option value="">Select Semester</option>
+                            <option value="sem1">Semester 1</option>
+                            <option value="sem2">Semester 2</option>
+                            <option value="sem3">Semester 3</option>
+                            <option value="sem4">Semester 4</option>
+                            <option value="sem5">Semester 5</option>
+                            <option value="sem6">Semester 6</option>
+                            <option value="sem7">Semester 7</option>
+                            <option value="sem8">Semester 8</option>
+                        </select>
+                    </div>
+                    <div id="sgpa-rows">
+                        <!-- Subjects will be auto-filled here -->
+                    </div>
+                    
+                    <div class="calc-actions">
+                        <button class="btn btn-purple" id="calculate-sgpa-btn">Calculate SGPA</button>
+                    </div>
+
+                    <div class="calc-result-display" id="sgpa-result">
+                        Your SGPA: <span>0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YGPA Calculator -->
+            <div class="tab-content" id="calc-ygpa">
+                <div class="calc-box">
+                    <div class="calc-row" style="grid-template-columns: 1fr 1fr;">
+                        <div>
+                            <label class="calc-label">Odd Semester SGPA</label>
+                            <input type="number" class="calc-input" id="ygpa-odd" placeholder="e.g. 7.5" step="0.01" min="0" max="10">
+                        </div>
+                        <div>
+                            <label class="calc-label">Even Semester SGPA</label>
+                            <input type="number" class="calc-input" id="ygpa-even" placeholder="e.g. 8.0" step="0.01" min="0" max="10">
+                        </div>
+                    </div>
+
+                    <div class="calc-actions">
+                        <button class="btn btn-purple" id="calculate-ygpa-btn">Calculate YGPA</button>
+                    </div>
+
+                    <div class="calc-result-display" id="ygpa-result">
+                        Your YGPA: <span>0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CGPA Calculator -->
+            <div class="tab-content" id="calc-cgpa">
+                <div class="calc-box">
+                    <p style="text-align: center; margin-bottom: 20px; color: var(--text-light);">Enter SGPAs for completed semesters</p>
+                    <div class="calc-row" style="grid-template-columns: 1fr 1fr;">
+                        <input type="number" class="calc-input cgpa-input" placeholder="Sem 1 SGPA">
+                        <input type="number" class="calc-input cgpa-input" placeholder="Sem 2 SGPA">
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1fr 1fr;">
+                        <input type="number" class="calc-input cgpa-input" placeholder="Sem 3 SGPA">
+                        <input type="number" class="calc-input cgpa-input" placeholder="Sem 4 SGPA">
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1fr 1fr;">
+                        <input type="number" class="calc-input cgpa-input" placeholder="Sem 5 SGPA">
+                        <input type="number" class="calc-input cgpa-input" placeholder="Sem 6 SGPA">
+                    </div>
+                    <div class="calc-row" style="grid-template-columns: 1fr 1fr;">
+                        <input type="number" class="calc-input cgpa-input" placeholder="Sem 7 SGPA">
+                        <input type="number" class="calc-input cgpa-input" placeholder="Sem 8 SGPA">
+                    </div>
+
+                    <div class="calc-actions">
+                        <button class="btn btn-purple" id="calculate-cgpa-btn">Calculate CGPA</button>
+                    </div>
+
+                    <div class="calc-result-display" id="cgpa-result">
+                        Your CGPA: <span>0.00</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer container">
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
+            <a href="terms_conditions.html">Terms & Conditions</a>
+        </div>
+        <p class="copyright">© 2026 Study Book. Built with ❤️ for students.</p>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
