@@ -1,3 +1,152 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact the Study Book team for support, feedback, or inquiries.">
+    <link rel="icon" type="image/png" href="logo.png?v=2">
+    <title>Contact Us - Study Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="canva-mode">
+
+    <!-- Mobile Top Bar -->
+    <div class="mobile-top-bar">
+        <button class="menu-btn" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+            <span>Study Book</span>
+        </div>
+        <button class="theme-toggle-nav" id="theme-toggle-mobile" style="display: flex;"><i class="fas fa-sun"></i></button>
+    </div>
+
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="menu-btn" id="sidebar-toggle-btn"><i class="fas fa-book-open sidebar-toggle-icon-default"></i><i class="fas fa-bars sidebar-toggle-icon-hover"></i></button>
+            <div class="logo"><div class="logo-icon"><i class="fas fa-book-open"></i></div><span>Study Book</span></div>
+            <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="login.html" class="sidebar-link profile-link"><i class="fas fa-user-circle"></i> <span>Profile</span></a>
+            <div class="menu-divider expanded-only"></div>
+            <a href="https://forms.gle/zvqRWNyxxjJ1iJWq9" target="_blank" class="sidebar-link"><i class="fas fa-plus"></i> <span>Upload Notes</span></a>
+            <div class="menu-divider expanded-only"></div>
+            <a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="search.html?q=Notes" class="sidebar-link"><i class="fas fa-file-alt"></i> <span>Notes</span></a>
+            <a href="search.html?q=PYQs" class="sidebar-link"><i class="fas fa-file-circle-question"></i> <span>PYQs</span></a>
+            <a href="search.html?q=Syllabus" class="sidebar-link expanded-only"><i class="fas fa-book-open"></i> <span>Syllabus</span></a>
+            <a href="calculator.html" class="sidebar-link"><i class="fas fa-calculator"></i> <span>Calculator</span></a>
+            <a href="about.html" class="sidebar-link"><i class="fas fa-info-circle"></i> <span>About Us</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" id="theme-toggle"><i class="fas fa-sun"></i> <span>Switch Theme</span></button>
+        </div>
+    </aside>
+
+    <!-- Navbar -->
+    <header class="navbar container">
+        <div class="nav-left">
+            <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+            <div class="logo"><div class="logo-icon"><i class="fas fa-book-open"></i></div><span>Study Book</span></div>
+            <button class="theme-toggle-nav" id="theme-toggle-nav"><i class="fas fa-sun"></i></button>
+        </div>
+        <nav class="nav-links desktop-only">
+            <a href="index.html">Home</a>
+            <a href="search.html?q=Notes">Notes</a>
+            <a href="search.html?q=PYQs">PYQs</a>
+            <a href="search.html?q=Syllabus">Syllabus</a>
+        </nav>
+        <a href="login.html" class="btn btn-purple nav-btn desktop-only">Login / Register</a>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+        <div class="internal-hero">
+            <h1>Contact Us</h1>
+            <p>Have questions, suggestions, or found an issue? We'd love to hear from you.</p>
+        </div>
+        
+        <div class="card" style="max-width: 600px; margin: 0 auto; padding: 40px; cursor: default; text-align: left; border: 1px solid var(--border-color);">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="contact-name" class="form-input" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="contact-email" class="form-input" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Subject</label>
+                    <input type="text" id="contact-subject" class="form-input" placeholder="How can we help you?" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea id="contact-message" class="form-textarea" placeholder="Write your message here..." required style="min-height: 150px;"></textarea>
+                </div>
+                <button type="submit" id="contact-submit-btn" class="btn btn-purple full-width" style="padding: 14px; font-size: 1.1rem; justify-content: center;">Send Message</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer container">
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy_policy.html">Privacy Policy</a>
+            <a href="terms_conditions.html">Terms & Conditions</a>
+        </div>
+        <p class="copyright">© 2026 Study Book. Built with ❤️ for students.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="module" src="auth.js"></script>
+    <script>
+        // Handle Contact Form Submission Visually
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const submitBtn = document.getElementById('contact-submit-btn');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+
+                    const name = document.getElementById('contact-name').value;
+                    const email = document.getElementById('contact-email').value;
+                    const subject = document.getElementById('contact-subject').value;
+                    const message = document.getElementById('contact-message').value;
+
+                    try {
+                        if (window.saveContactMessage) {
+                            await window.saveContactMessage({ name, email, subject, message });
+                            window.showToast('Your message has been sent successfully. We will get back to you soon!', 'success');
+                            contactForm.reset();
+                        } else {
+                            window.showToast('System is connecting... Please click send again in a moment.', 'warning');
+                        }
+                    } catch (error) {
+                        console.error("Contact form submission error:", error);
+                        // Display the exact Firebase error message to the user for easier debugging
+                        window.showToast(`Error: ${error.message || 'Failed to send message.'}`, 'error');
+                    } finally {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,4 +281,5 @@
 
     <script src="script.js"></script>
 </body>
+>>>>>>> 1af2d087193d90a7d6622d153ab335f57fc16331
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home Page -->
@@ -57,4 +58,65 @@
     <priority>0.50</priority>
     <changefreq>yearly</changefreq>
   </url>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home Page -->
+  <url>
+    <loc>https://studybook.gt.tc/</loc>
+    <priority>1.00</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://studybook.gt.tc/index.html</loc>
+    <priority>1.00</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Main Resources -->
+  <url>
+    <loc>https://studybook.gt.tc/notes.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://studybook.gt.tc/pyqs.html</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://studybook.gt.tc/syllabus.html</loc>
+    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://studybook.gt.tc/calculator.html</loc>
+    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Information Pages -->
+  <url>
+    <loc>https://studybook.gt.tc/about.html</loc>
+    <priority>0.60</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://studybook.gt.tc/contact.html</loc>
+    <priority>0.60</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://studybook.gt.tc/privacy_policy.html</loc>
+    <priority>0.50</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://studybook.gt.tc/terms_conditions.html</loc>
+    <priority>0.50</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+>>>>>>> 1af2d087193d90a7d6622d153ab335f57fc16331
 </urlset>

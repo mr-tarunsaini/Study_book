@@ -84,6 +84,9 @@
             <a href="search.html?q=Syllabus" class="sidebar-link expanded-only">
                 <i class="fas fa-book-open"></i> <span>Syllabus</span>
             </a>
+            <a href="calculator.html" class="sidebar-link">
+                <i class="fas fa-calculator"></i> <span>Calculator</span>
+            </a>
             
             <a href="about.html" class="sidebar-link">
                 <i class="fas fa-info-circle"></i> <span>About Us</span>
@@ -146,27 +149,39 @@
                     </div>
                 </div>
             </section>
-
+    
             <!-- Continue Reading Section -->
-            <section class="content-section" id="continue-reading-section">
-                <h2 class="section-title">Continue Reading</h2>
-                <p class="section-description desktop-only">Pick up where you left off with your last opened PDFs.</p>
-                <div class="document-grid" id="continue-reading-grid">
+            <section class="content-section" id="continue-reading">
+                <div class="section-header-flex">
+                    <div class="section-header-text">
+                        <h2 class="section-title">Continue Reading</h2>
+                        <p class="section-description desktop-only">Pick up where you left off.</p>
+                    </div>
                 </div>
+                <div class="document-grid" id="continue-reading-grid"></div>
             </section>
 
             <!-- Recently Uploaded Section -->
-            <section class="content-section" id="recently-uploaded-section">
-                <h2 class="section-title">Recently Uploaded</h2>
-                <p class="section-description desktop-only">Freshly uploaded study materials from students.</p>
-                <div class="document-grid" id="recently-uploaded-grid">
+            <section class="content-section" id="recently-uploaded">
+                <div class="section-header-flex">
+                    <div class="section-header-text">
+                        <h2 class="section-title">Recently Uploaded</h2>
+                        <p class="section-description desktop-only">Check out the newest study materials shared by the community.</p>
+                    </div>
+                    <a href="search.html" class="view-all-btn">View All <i class="fas fa-arrow-right"></i></a>
                 </div>
+                <div class="document-grid" id="recently-uploaded-grid"></div>
             </section>
-     
+
             <!-- Content Section (Notes) -->
             <section class="content-section" id="notes">
-                <h2 class="section-title">Trending Notes</h2>
-                <p class="section-description desktop-only">Discover the latest notes and resources shared by your peers.</p>
+                <div class="section-header-flex">
+                    <div class="section-header-text">
+                        <h2 class="section-title">Explore Notes</h2>
+                        <p class="section-description desktop-only">Discover the latest notes and resources shared by your peers.</p>
+                    </div>
+                    <a href="search.html?q=Notes" class="view-all-btn">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
                 
                 <!-- Space for dynamically fetched uploaded cards -->
                 <div class="document-grid" id="uploaded-notes-grid">
@@ -175,8 +190,13 @@
     
             <!-- Content Section (PYQs) -->
             <section class="content-section" id="pyqs">
-                <h2 class="section-title" id="get-started">Trending PYQs</h2>
-                <p class="section-description desktop-only">Practice with previous year question papers to understand exam patterns.</p>
+                <div class="section-header-flex">
+                    <div class="section-header-text">
+                        <h2 class="section-title" id="get-started">Practice PYQs</h2>
+                        <p class="section-description desktop-only">Practice with previous year question papers to understand exam patterns.</p>
+                    </div>
+                    <a href="search.html?q=PYQs" class="view-all-btn">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
                 
                 <!-- Space for dynamically fetched uploaded cards -->
                 <div class="document-grid" id="uploaded-pyqs-grid">
@@ -189,19 +209,19 @@
                 <p class="section-description">Discover what makes our platform the preferred choice for engineering students.</p>
                 <div class="features-grid">
                     <div class="card feature-card">
-                        <div class="icon-box blue-icon"><i class="fas fa-tag"></i></div>
-                        <h3>Free & Simple</h3>
-                        <p>No hidden fees, just pure learning.</p>
+                        <div class="icon-box blue-icon"><i class="fas fa-tools"></i></div>
+                        <h3>All-in-One Toolkit</h3>
+                        <p>From an SGPA/CGPA calculator to a powerful PDF viewer, get all the tools you need.</p>
                     </div>
-                    <div class="card feature-card purple-card">
-                        <div class="icon-box purple-icon"><i class="fas fa-bullseye"></i></div>
-                        <h3>Exam Focused</h3>
-                        <p>Curated content for high scores.</p>
+                    <div class="card feature-card blue-card">
+                        <div class="icon-box blue-icon"><i class="fas fa-users"></i></div>
+                        <h3>Community Powered</h3>
+                        <p>Access a growing library of notes and PYQs shared by students just like you.</p>
                     </div>
                     <div class="card feature-card">
-                        <div class="icon-box blue-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <h3>Mobile Friendly</h3>
-                        <p>Study on the go, anytime.</p>
+                        <div class="icon-box blue-icon"><i class="fas fa-bookmark"></i></div>
+                        <h3>Smart & Personalized</h3>
+                        <p>Save your favorite materials and pick up right where you left off with Continue Reading.</p>
                     </div>
                 </div>
             </section>
@@ -215,7 +235,7 @@
                 </a>
             </section>
             <div style="margin-top: 50px; text-align: center;">
-                <h3 style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(to right, var(--blue-accent), var(--purple-accent)); -webkit-background-clip: text; background-clip: text; color: transparent;">Study Book — Study Smarter. Score Better.</h3>
+                <h3 class="tag-line" style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(to right, var(--blue-accent), var(--purple-accent)); -webkit-background-clip: text; background-clip: text; color: transparent;">Study Book — Study Smarter. Score Better.</h3>
             </div>
     
         </main>
