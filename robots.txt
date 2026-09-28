@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /account.html
+Disallow: /*?*q=*
+Disallow: /coming_soon.html
+
+Sitemap: https://studybook.gt.tc/sitemap.xml
